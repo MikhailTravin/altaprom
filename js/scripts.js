@@ -284,26 +284,6 @@ $(document).ready(() => {
     }
   });
 
-  function indents() {
-    const header = document.querySelector('.header');
-    const page = document.querySelector('.main');
-
-    //Оступ от шапки
-    let hHeader = window.getComputedStyle(header, false).height;
-    hHeader = Number(hHeader.slice(0, hHeader.length - 2));
-    if (page) {
-      page.style.paddingTop = hHeader + 'px';
-    }
-
-  }
-  window.addEventListener('scroll', () => {
-    indents();
-  });
-  window.addEventListener('resize', () => {
-    indents();
-  });
-  indents();
-
   //Меню
   function menuInit() {
     if (document.querySelector(".header__icon")) {
@@ -529,6 +509,34 @@ $(document).ready(() => {
     // По умолчанию — показываем хиты продаж
     applyFilter('hit');
   });
+
+  //Карта
+  const map = document.querySelector("#map");
+  if (map) {
+    if ("undefined" !== typeof ymaps) ymaps.ready((() => initMainMap()));
+    else console.warn("Yandex Maps API не загружено для карты #map");
+    function initMainMap() {
+      try {
+        var myMap = new ymaps.Map("map", {
+          center: [55.879207, 37.492428],
+          zoom: 18,
+          controls: ["zoomControl"],
+          behaviors: ["drag"]
+        }, {
+          searchControlProvider: "yandex#search"
+        });
+        const placemark1 = new ymaps.Placemark([55.879207, 37.492428], {}, {
+          iconLayout: "default#image",
+          iconImageHref: "img/location.svg",
+          iconImageSize: [44, 60],
+          iconImageOffset: [20, -10]
+        });
+        myMap.geoObjects.add(placemark1);
+      } catch (error) {
+        console.error("Ошибка при инициализации карты #map:", error);
+      }
+    }
+  }
 });
 
 //========================================================================================================================================================
