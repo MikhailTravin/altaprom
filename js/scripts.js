@@ -298,96 +298,424 @@ $(document).ready(() => {
   menuInit()
 
   //Слайдер
-
   AW.initSliderIntro = function ($el) {
     const $wrapper = $('[data-swiper-wrapper="intro"]');
     const $navNext = $wrapper.find('.block-intro__nav-next');
     const $navPrev = $wrapper.find('.block-intro__nav-prev');
 
-    const swiper = new Swiper($el[0], {
-      spaceBetween: 0,
+    const thumbsSwiper = new Swiper('.swiper-intro-pagination', {
+      loop: true,
+      slidesPerView: 3,
+      watchSlidesProgress: true,
+      speed: 400,
+      allowTouchMove: false,
+      centeredSlides: true,
+      breakpoints: {
+        0: { slidesPerView: 1, centeredSlides: false, },
+        550: { slidesPerView: 2, centeredSlides: false, },
+        992: { slidesPerView: 3 }
+      },
+      on: {
+        init: function () {
+          this.update();
+        }
+      }
+    });
+
+    const mainSwiper = new Swiper('.swiper-intro', {
+      loop: true,
       slidesPerView: 1,
-      speed: 200,
+      speed: 400,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      thumbs: {
+        swiper: thumbsSwiper,
+      },
       navigation: {
         nextEl: $navNext[0],
         prevEl: $navPrev[0],
       },
       on: {
-        init: function () {
-          updatePagination(this.activeIndex, $wrapper); // Передаем $wrapper вместо $el
-        },
         slideChange: function () {
-          updatePagination(this.activeIndex, $wrapper); // Передаем $wrapper
+          thumbsSwiper.slideToLoop(this.realIndex);
+        }
+      }
+    });
+  };
+  $('[data-swiper="intro"]').each(function () {
+    AW.initSliderIntro($(this));
+  });
+/*
+  AW.initSliderIntro = function ($el) {
+    const $wrapper = $('[data-swiper-wrapper="intro"]');
+    const $navNext = $wrapper.find('.block-intro__nav-next');
+    const $navPrev = $wrapper.find('.block-intro__nav-prev');
+    const $mainWrapper = $('.swiper-intro .swiper-wrapper');
+    const $thumbWrapper = $('.swiper-intro-pagination .swiper-wrapper');
+
+    // Функция для дублирования первого и последнего слайда
+    function duplicateSlides(wrapperClass) {
+      const $wrapper = $(wrapperClass + ' .swiper-wrapper');
+      const $slides = $wrapper.children('.swiper-slide');
+
+      if ($slides.length < 2) return; // Нужно минимум 2 слайда
+
+      // Клонируем первый и последний слайды
+      const firstSlide = $slides[0].cloneNode(true);
+      const lastSlide = $slides[$slides.length - 1].cloneNode(true);
+
+      // Добавляем копии в начало и конец
+      $wrapper.prepend(lastSlide);
+      $wrapper.append(firstSlide);
+    }
+
+    // Применяем дублирование для обоих слайдеров
+    duplicateSlides('.swiper-intro');
+    duplicateSlides('.swiper-intro-pagination');
+
+    // Инициализация thumbs-слайдера
+    const thumbsSwiper = new Swiper('.swiper-intro-pagination', {
+      loop: true,
+      slidesPerView: 3,
+      watchSlidesProgress: true,
+      speed: 400,
+      allowTouchMove: false,
+      centeredSlides: true,
+      breakpoints: {
+        0: { slidesPerView: 1, centeredSlides: false },
+        550: { slidesPerView: 2, centeredSlides: false },
+        992: { slidesPerView: 3 }
+      },
+      on: {
+        init: function () {
+          this.update();
+        }
+      }
+    });
+
+    // Инициализация основного слайдера
+    const mainSwiper = new Swiper('.swiper-intro', {
+      loop: true,
+      slidesPerView: 1,
+      speed: 400,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      thumbs: {
+        swiper: thumbsSwiper,
+      },
+      navigation: {
+        nextEl: $navNext[0],
+        prevEl: $navPrev[0],
+      },
+      on: {
+        slideChange: function () {
+          thumbsSwiper.slideToLoop(this.realIndex);
+        }
+      }
+    });
+  };
+  $('[data-swiper="intro"]').each(function () {
+    AW.initSliderIntro($(this));
+  });
+  */
+
+  AW.initSliderCatalog = function ($el) {
+    const $buttonsContainer = $el.closest('.nav-catalog-detail__buttons');
+    const $navNext = $buttonsContainer.find('.swiper-nav_next');
+    const $navPrev = $buttonsContainer.find('.swiper-nav_prev');
+    const $slider = $buttonsContainer.find('.nav-catalog-detail__slider');
+
+    let swiperInstance = null;
+
+    function initSwiper() {
+      if (window.innerWidth < 992) {
+        if (!swiperInstance) {
+          swiperInstance = new Swiper($slider[0], {
+            loop: false, // Важно отключить loop для корректной работы
+            slidesPerView: 'auto',
+            speed: 400,
+            spaceBetween: 8,
+            navigation: {
+              nextEl: $navNext[0],
+              prevEl: $navPrev[0],
+            },
+            on: {
+              init: function () {
+                updateContainerClasses(this);
+              },
+              slideChange: function () {
+                updateContainerClasses(this);
+              },
+              reachEnd: function () {
+                $buttonsContainer.addClass('slider-at-end');
+              },
+              reachBeginning: function () {
+                $buttonsContainer.removeClass('slider-at-end');
+              },
+              fromEdge: function () {
+                updateContainerClasses(this);
+              }
+            }
+          });
+        }
+      } else {
+        if (swiperInstance) {
+          swiperInstance.destroy(true, true);
+          swiperInstance = null;
+          $buttonsContainer.removeClass('slider-at-end');
+        }
+      }
+    }
+
+    function updateContainerClasses(swiper) {
+      if (swiper.isEnd) {
+        $buttonsContainer.addClass('slider-at-end');
+      } else {
+        $buttonsContainer.removeClass('slider-at-end');
+      }
+    }
+
+    // Инициализация при загрузке
+    initSwiper();
+
+    // Обработка ресайза с debounce для оптимизации
+    let resizeTimeout;
+    $(window).on('resize', function () {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () {
+        initSwiper();
+      }, 250);
+    });
+  };
+  $('[data-swiper="catalog-detail"]').each(function () {
+    AW.initSliderCatalog($(this));
+  });
+
+  AW.initProductSlider = function ($el) {
+    const $wrapper = $('[data-swiper-wrapper="product-card"]');
+    const $navNext = $wrapper.find('.swiper-nav_next');
+    const $navPrev = $wrapper.find('.swiper-nav_prev');
+
+    // Инициализация миниатюр (thumbs)
+    const thumbsSwiper = new Swiper('.swiper-thumbs', {
+      observer: true,
+      observeParents: true,
+      slidesPerView: 4,
+      spaceBetween: 20,
+      speed: 400,
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      breakpoints: {
+        0: {
+          spaceBetween: 10,
+        },
+        768: {
+          spaceBetween: 20,
         },
       },
     });
 
-    let lastWindowWidth = window.innerWidth;
-
-    $(window).on('resize', function () {
-      const currentWidth = window.innerWidth;
-      if (currentWidth !== lastWindowWidth) {
-        updatePagination(swiper.activeIndex, $wrapper);
-      }
-      lastWindowWidth = currentWidth;
+    // Инициализация основного слайдера
+    const mainSwiper = new Swiper('.swiper-product-card', {
+      loop: true,
+      thumbs: {
+        swiper: thumbsSwiper,
+      },
+      observer: true,
+      observeParents: true,
+      slidesPerView: 1,
+      spaceBetween: 2,
+      speed: 400,
+      navigation: {
+        nextEl: $navNext[0],
+        prevEl: $navPrev[0],
+      },
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
     });
-
-    return swiper;
   };
-
-  function updatePagination(activeIndex, $wrapper) {
-    const paginationItems = $wrapper.find('.block-intro__pagination-item');
-
-    if (!paginationItems.length) {
-      console.warn('Пункты пагинации не найдены!');
-      return;
-    }
-
-    // Удаляем _active у всех пунктов
-    paginationItems.removeClass('_active');
-
-    // Добавляем _active только активному
-    paginationItems.eq(activeIndex).addClass('_active');
-
-    // === Показываем только видимый диапазон (по желанию) ===
-    const visibleRange = getVisibleRange(window.innerWidth);
-    const halfRange = Math.floor(visibleRange / 2);
-
-    let start = activeIndex - halfRange;
-    let end = activeIndex + halfRange;
-
-    const totalItems = paginationItems.length;
-
-    if (start < 0) {
-      end -= start;
-      start = 0;
-    }
-    if (end >= totalItems) {
-      start -= (end - totalItems + 1);
-      end = totalItems - 1;
-    }
-
-    // Показываем/скрываем пункты в зависимости от диапазона
-    paginationItems.each(function (index) {
-      $(this).toggle(index >= start && index <= end);
-    });
-  }
-
-  // Функция для определения видимого диапазона
-  function getVisibleRange(windowWidth) {
-    if (windowWidth >= 992) { // Desktop
-      return 3;
-    } else if (windowWidth >= 768) { // Tablet
-      return 2;
-    } else { // Mobile
-      return 1;
-    }
-  }
-
-  $('[data-swiper="intro"]').each(function () {
-    AW.initSliderIntro($(this));
+  $('[data-swiper="product-card"]').each(function () {
+    AW.initProductSlider($(this));
   });
 
+  AW.initProductRecommeded = function ($el) {
+    const $wrapper = $('[data-swiper-wrapper="block-recommended"]');
+    const $navNext = $wrapper.find('.swiper-nav_next');
+    const $navPrev = $wrapper.find('.swiper-nav_prev');
+
+    // Инициализация основного слайдера
+    new Swiper('.swiper-recommended', {
+      observer: true,
+      observeParents: true,
+      slidesPerView: 4,
+      speed: 400,
+      navigation: {
+        nextEl: $navNext[0],
+        prevEl: $navPrev[0],
+      },
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+        },
+        992: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  };
+  $('[data-swiper="block-recommended"]').each(function () {
+    AW.initProductRecommeded($(this));
+  });
+
+  AW.initSliderComparison = function ($el) {
+    const $wrapper = $('[data-swiper-wrapper="swiper-comparison"]');
+    const $navNext = $wrapper.find('.swiper-nav_next');
+    const $navPrev = $wrapper.find('.swiper-nav_prev');
+    const $scrollbar = $wrapper.find('.swiper-scrollbar'); // Находим скроллбар
+
+    // Инициализация слайдера с скроллбаром
+    new Swiper('.swiper-comparison', {
+      observer: true,
+      observeParents: true,
+      slidesPerView: 5,
+      speed: 400,
+      navigation: {
+        nextEl: $navNext[0],
+        prevEl: $navPrev[0],
+      },
+      scrollbar: {
+        el: $scrollbar[0],
+        draggable: true,
+        hide: false,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 0.9,
+        },
+        375: {
+          slidesPerView: 1.9,
+        },
+        992: {
+          slidesPerView: 3,
+        },
+        1400: {
+          slidesPerView: 5,
+        },
+      },
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      on: {
+        init: syncRowHeights,
+        slideChange: syncRowHeights
+      }
+    });
+  };
+  $('[data-swiper="swiper-comparison"]').each(function () {
+    AW.initSliderComparison($(this));
+  });
+
+  AW.initSliderTabsNav = function ($el) {
+    const $top = $('.tabs__top'); // Контейнер, которому будем добавлять классы
+
+    new Swiper('.tabs-slider-nav', {
+      observer: true,
+      observeParents: true,
+      slidesPerView: 'auto',
+      speed: 400,
+      spaceBetween: 40,
+      breakpoints: {
+        0: {
+          spaceBetween: 20,
+        },
+        768: {
+          spaceBetween: 40,
+        },
+      },
+
+      // === Добавляем обработчики событий ===
+      on: {
+        init: function () {
+          updateClasses(this);
+        },
+        slideChange: function () {
+          updateClasses(this);
+        },
+        resize: function () {
+          updateClasses(this);
+        },
+        scroll: function () {
+          updateClasses(this);
+        }
+      }
+    });
+
+    // === Функция для обновления классов start/end ===
+    function updateClasses(swiperInstance) {
+      const { isBeginning, isEnd } = swiperInstance;
+
+      if (isBeginning) {
+        $top.addClass('start');
+      } else {
+        $top.removeClass('start');
+      }
+
+      if (isEnd) {
+        $top.addClass('end');
+      } else {
+        $top.removeClass('end');
+      }
+    }
+  };
+
+  $('[data-swiper="swiper-tabs-nav"]').each(function () {
+    AW.initSliderTabsNav($(this));
+  });
+
+  //Высота
+  function syncRowHeights() {
+    // Получаем все строки из основной таблицы
+    const mainTableRows = document.querySelectorAll('.comparison-tabs__main-table .comparison-tabs__value');
+    // Получаем все строки из таблицы сравнения
+    const comparisonTableRows = document.querySelectorAll('.comparison-tabs__table .swiper-slide');
+
+    // Сначала сбрасываем все minHeight, чтобы они не влияли на расчеты
+    mainTableRows.forEach(row => row.style.minHeight = '');
+    comparisonTableRows.forEach(slide => {
+      slide.querySelectorAll('.comparison-tabs__value').forEach(row => {
+        row.style.minHeight = '';
+      });
+    });
+
+    // Теперь рассчитываем новые высоты
+    mainTableRows.forEach((mainRow, index) => {
+      let maxHeight = mainRow.offsetHeight;
+
+      // Находим соответствующую строку в каждом слайде
+      comparisonTableRows.forEach(slide => {
+        const comparisonRow = slide.querySelectorAll('.comparison-tabs__value')[index];
+        if (comparisonRow) {
+          maxHeight = Math.max(maxHeight, comparisonRow.offsetHeight);
+        }
+      });
+
+      // Устанавливаем максимальную высоту для всех соответствующих строк
+      mainRow.style.minHeight = `${maxHeight}px`;
+      comparisonTableRows.forEach(slide => {
+        const comparisonRow = slide.querySelectorAll('.comparison-tabs__value')[index];
+        if (comparisonRow) {
+          comparisonRow.style.minHeight = `${maxHeight}px`;
+        }
+      });
+    });
+  }
+  window.addEventListener('load', syncRowHeights);
+  window.addEventListener('resize', syncRowHeights);
 
   //Форма
   document.querySelectorAll('.form-group').forEach(group => {
@@ -410,7 +738,6 @@ $(document).ready(() => {
     // Инициальная проверка
     updateLabel();
   });
-
   AW.validateForm = function ($el) {
     if ($el.length === 0) return;
 
@@ -471,43 +798,96 @@ $(document).ready(() => {
 
     return validator;
   }
-
   $('[data-validate]').each(function () {
     AW.validateForm($(this));
   });
 
+  //табы
+  const buttons = document.querySelectorAll('.heading-complex__button-filter');
+  const contents = document.querySelectorAll('.block-recommended__content');
+  function filterProducts(filter) {
+    // Удаляем класс active у всех кнопок
+    buttons.forEach(btn => btn.classList.remove('active'));
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const cards = document.querySelectorAll('.card-product');
-    const allButtons = document.querySelectorAll('.heading-complex__button-filter');
+    // Добавляем active к выбранной кнопке (с тем же data-filter)
+    document.querySelectorAll(`.heading-complex__button-filter[data-filter="${filter}"]`)
+      .forEach(btn => btn.classList.add('active'));
 
-    // Общая функция фильтрации
-    function applyFilter(selectedFilter) {
-      cards.forEach(card => {
-        const cardType = card.getAttribute('data-product');
-        if (selectedFilter === 'all' || cardType === selectedFilter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Обновляем класс active у всех кнопок
-      allButtons.forEach(button => {
-        button.classList.toggle('active', button.dataset.filter === selectedFilter);
-      });
-    }
-
-    // Назначаем обработчики клика
-    allButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const filter = this.dataset.filter;
-        applyFilter(filter);
-      });
+    // Скрываем все блоки контента
+    contents.forEach(content => {
+      if (content.getAttribute('data-product') === filter) {
+        content.style.display = 'block';
+      } else {
+        content.style.display = 'none';
+      }
     });
+  }
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      filterProducts(filter);
+    });
+  });
 
-    // По умолчанию — показываем хиты продаж
-    applyFilter('hit');
+  //Табы
+  const tabs = document.querySelectorAll('.tabs__title');
+  const contentsTabs = document.querySelectorAll('.tabs__body');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.tabs; // Получаем data-tabs значение
+
+      // 1. Убираем активный класс у всех кнопок
+      tabs.forEach(t => t.classList.remove('_tab-active'));
+
+      // 2. Добавляем активный класс текущей кнопке
+      tab.classList.add('_tab-active');
+
+      // 3. Скрываем все блоки с контентом
+      contentsTabs.forEach(content => {
+        content.classList.remove('_tab-active');
+      });
+
+      // 4. Показываем нужный блок
+      const activeContent = document.querySelector(`[data-tabs-content="${targetTab}"]`);
+      if (activeContent) {
+        activeContent.classList.add('_tab-active');
+      }
+    });
+  });
+
+  //Фильтр
+  const filterMob = document.querySelector('.block-catalog-detail__filter-mob');
+  const filterPanel = document.querySelector('.filter-catalog-detail');
+  const filterCloseBtn = document.querySelector('.filter-catalog-detail__close');
+  const htmlElement = document.documentElement;
+
+  if (!filterMob || !filterPanel) return;
+
+  // Открытие фильтра
+  filterMob.addEventListener('click', function (e) {
+    e.stopPropagation();
+    htmlElement.classList.add('filter-open');
+    filterPanel.classList.add('filter-open');
+  });
+
+  // Закрытие по кнопке
+  if (filterCloseBtn) {
+    filterCloseBtn.addEventListener('click', function () {
+      htmlElement.classList.remove('filter-open');
+      filterPanel.classList.remove('filter-open');
+    });
+  }
+
+  // Закрытие при клике вне области фильтра
+  document.addEventListener('click', function (e) {
+    const isClickInsideFilter = filterPanel.contains(e.target);
+    const isClickOnFilterMob = filterMob === e.target || filterMob.contains(e.target);
+
+    if (!isClickInsideFilter && !isClickOnFilterMob) {
+      htmlElement.classList.remove('filter-open');
+      filterPanel.classList.remove('filter-open');
+    }
   });
 
   //Карта
@@ -537,6 +917,193 @@ $(document).ready(() => {
       }
     }
   }
+
+  let _slideUp = (target, duration = 500, showmore = 0) => {
+    if (!target.classList.contains("_slide")) {
+      target.classList.add("_slide");
+      target.style.transitionProperty = "height, margin, padding";
+      target.style.transitionDuration = duration + "ms";
+      target.style.height = `${target.offsetHeight}px`;
+      target.offsetHeight;
+      target.style.overflow = "hidden";
+      target.style.height = showmore ? `${showmore}px` : `0px`;
+      target.style.paddingTop = 0;
+      target.style.paddingBottom = 0;
+      target.style.marginTop = 0;
+      target.style.marginBottom = 0;
+      window.setTimeout((() => {
+        target.hidden = !showmore ? true : false;
+        !showmore ? target.style.removeProperty("height") : null;
+        target.style.removeProperty("padding-top");
+        target.style.removeProperty("padding-bottom");
+        target.style.removeProperty("margin-top");
+        target.style.removeProperty("margin-bottom");
+        !showmore ? target.style.removeProperty("overflow") : null;
+        target.style.removeProperty("transition-duration");
+        target.style.removeProperty("transition-property");
+        target.classList.remove("_slide");
+        document.dispatchEvent(new CustomEvent("slideUpDone", {
+          detail: {
+            target
+          }
+        }));
+      }), duration);
+    }
+  };
+  let _slideDown = (target, duration = 500, showmore = 0) => {
+    if (!target.classList.contains("_slide")) {
+      target.classList.add("_slide");
+      target.hidden = target.hidden ? false : null;
+      showmore ? target.style.removeProperty("height") : null;
+      let height = target.offsetHeight;
+      target.style.overflow = "hidden";
+      target.style.height = showmore ? `${showmore}px` : `0px`;
+      target.style.paddingTop = 0;
+      target.style.paddingBottom = 0;
+      target.style.marginTop = 0;
+      target.style.marginBottom = 0;
+      target.offsetHeight;
+      target.style.transitionProperty = "height, margin, padding";
+      target.style.transitionDuration = duration + "ms";
+      target.style.height = height + "px";
+      target.style.removeProperty("padding-top");
+      target.style.removeProperty("padding-bottom");
+      target.style.removeProperty("margin-top");
+      target.style.removeProperty("margin-bottom");
+      window.setTimeout((() => {
+        target.style.removeProperty("height");
+        target.style.removeProperty("overflow");
+        target.style.removeProperty("transition-duration");
+        target.style.removeProperty("transition-property");
+        target.classList.remove("_slide");
+        document.dispatchEvent(new CustomEvent("slideDownDone", {
+          detail: {
+            target
+          }
+        }));
+      }), duration);
+    }
+  };
+  let _slideToggle = (target, duration = 500) => {
+    if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
+  };
+
+  //Спойлеры
+  function spollers() {
+    const spollersArray = document.querySelectorAll("[data-spollers]");
+    if (spollersArray.length > 0) {
+      const spollersRegular = Array.from(spollersArray).filter((function (item, index, self) {
+        return !item.dataset.spollers.split(",")[0];
+      }));
+      if (spollersRegular.length) initSpollers(spollersRegular);
+      function initSpollers(spollersArray, matchMedia = false) {
+        spollersArray.forEach((spollersBlock => {
+          spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
+          if (matchMedia.matches || !matchMedia) {
+            spollersBlock.classList.add("_spoller-init");
+            initSpollerBody(spollersBlock);
+            spollersBlock.addEventListener("click", setSpollerAction);
+          } else {
+            spollersBlock.classList.remove("_spoller-init");
+            initSpollerBody(spollersBlock, false);
+            spollersBlock.removeEventListener("click", setSpollerAction);
+          }
+        }));
+      }
+      function initSpollerBody(spollersBlock, hideSpollerBody = true) {
+        let spollerTitles = spollersBlock.querySelectorAll("[data-spoller]");
+        if (spollerTitles.length) {
+          spollerTitles = Array.from(spollerTitles).filter((item => item.closest("[data-spollers]") === spollersBlock));
+          spollerTitles.forEach((spollerTitle => {
+            if (hideSpollerBody) {
+              spollerTitle.removeAttribute("tabindex");
+              if (!spollerTitle.classList.contains("_spoller-active")) spollerTitle.nextElementSibling.hidden = true;
+            } else {
+              spollerTitle.setAttribute("tabindex", "-1");
+              spollerTitle.nextElementSibling.hidden = false;
+            }
+          }));
+        }
+      }
+      function setSpollerAction(e) {
+        const el = e.target;
+        if (el.closest("[data-spoller]")) {
+          const spollerTitle = el.closest("[data-spoller]");
+          const spollersBlock = spollerTitle.closest("[data-spollers]");
+          const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
+          const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+          if (!spollersBlock.querySelectorAll("._slide").length) {
+            if (oneSpoller && !spollerTitle.classList.contains("_spoller-active")) hideSpollersBody(spollersBlock);
+            spollerTitle.classList.toggle("_spoller-active");
+            _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+          }
+          e.preventDefault();
+        }
+      }
+      function hideSpollersBody(spollersBlock) {
+        const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._spoller-active");
+        const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+        if (spollerActiveTitle && !spollersBlock.querySelectorAll("._slide").length) {
+          spollerActiveTitle.classList.remove("_spoller-active");
+          _slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
+        }
+      }
+      const spollersClose = document.querySelectorAll("[data-spoller-close]");
+      if (spollersClose.length) document.addEventListener("click", (function (e) {
+        const el = e.target;
+        if (!el.closest("[data-spollers]")) spollersClose.forEach((spollerClose => {
+          const spollersBlock = spollerClose.closest("[data-spollers]");
+          const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+          spollerClose.classList.remove("_spoller-active");
+          _slideUp(spollerClose.nextElementSibling, spollerSpeed);
+        }));
+      }));
+    }
+  }
+  spollers()
+
+  //Ползунок
+  function rangeInit() {
+    const ratingSearch = document.querySelector('.filter-catalog-detail__range');
+    if (ratingSearch) {
+      noUiSlider.create(ratingSearch, {
+        start: [0, 165760],
+        connect: true,
+        range: {
+          'min': [0],
+          'max': [600000]
+        },
+        format: wNumb({
+          decimals: 0,
+          thousand: ' ',
+        })
+      });
+
+      const priceStart = document.getElementById('price-start');
+      const priceEnd = document.getElementById('price-end');
+      priceStart.addEventListener('change', function () {
+        ratingSearch.noUiSlider.set([this.value, null]);
+      });
+      priceEnd.addEventListener('change', function () {
+        ratingSearch.noUiSlider.set([null, this.value]);
+      });
+      ratingSearch.noUiSlider.on('update', function (values, handle) {
+
+        var value = values[handle];
+
+        if (handle) {
+          priceEnd.value = value;
+        } else {
+          priceStart.value = value;
+        }
+      });
+    }
+  };
+  rangeInit();
+
+
+
+
 });
 
 //========================================================================================================================================================
