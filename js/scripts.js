@@ -311,82 +311,9 @@ $(document).ready(() => {
       allowTouchMove: false,
       centeredSlides: true,
       breakpoints: {
-        0: { slidesPerView: 1, centeredSlides: false, },
-        550: { slidesPerView: 2, centeredSlides: false, },
-        992: { slidesPerView: 3 }
-      },
-      on: {
-        init: function () {
-          this.update();
-        }
-      }
-    });
-
-    const mainSwiper = new Swiper('.swiper-intro', {
-      loop: true,
-      slidesPerView: 1,
-      speed: 400,
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      thumbs: {
-        swiper: thumbsSwiper,
-      },
-      navigation: {
-        nextEl: $navNext[0],
-        prevEl: $navPrev[0],
-      },
-      on: {
-        slideChange: function () {
-          thumbsSwiper.slideToLoop(this.realIndex);
-        }
-      }
-    });
-  };
-  $('[data-swiper="intro"]').each(function () {
-    AW.initSliderIntro($(this));
-  });
-/*
-  AW.initSliderIntro = function ($el) {
-    const $wrapper = $('[data-swiper-wrapper="intro"]');
-    const $navNext = $wrapper.find('.block-intro__nav-next');
-    const $navPrev = $wrapper.find('.block-intro__nav-prev');
-    const $mainWrapper = $('.swiper-intro .swiper-wrapper');
-    const $thumbWrapper = $('.swiper-intro-pagination .swiper-wrapper');
-
-    // Функция для дублирования первого и последнего слайда
-    function duplicateSlides(wrapperClass) {
-      const $wrapper = $(wrapperClass + ' .swiper-wrapper');
-      const $slides = $wrapper.children('.swiper-slide');
-
-      if ($slides.length < 2) return; // Нужно минимум 2 слайда
-
-      // Клонируем первый и последний слайды
-      const firstSlide = $slides[0].cloneNode(true);
-      const lastSlide = $slides[$slides.length - 1].cloneNode(true);
-
-      // Добавляем копии в начало и конец
-      $wrapper.prepend(lastSlide);
-      $wrapper.append(firstSlide);
-    }
-
-    // Применяем дублирование для обоих слайдеров
-    duplicateSlides('.swiper-intro');
-    duplicateSlides('.swiper-intro-pagination');
-
-    // Инициализация thumbs-слайдера
-    const thumbsSwiper = new Swiper('.swiper-intro-pagination', {
-      loop: true,
-      slidesPerView: 3,
-      watchSlidesProgress: true,
-      speed: 400,
-      allowTouchMove: false,
-      centeredSlides: true,
-      breakpoints: {
         0: { slidesPerView: 1, centeredSlides: false },
         550: { slidesPerView: 2, centeredSlides: false },
-        992: { slidesPerView: 3 }
+        992: { slidesPerView: 3, centeredSlides: true }
       },
       on: {
         init: function () {
@@ -395,7 +322,6 @@ $(document).ready(() => {
       }
     });
 
-    // Инициализация основного слайдера
     const mainSwiper = new Swiper('.swiper-intro', {
       loop: true,
       slidesPerView: 1,
@@ -421,7 +347,6 @@ $(document).ready(() => {
   $('[data-swiper="intro"]').each(function () {
     AW.initSliderIntro($(this));
   });
-  */
 
   AW.initSliderCatalog = function ($el) {
     const $buttonsContainer = $el.closest('.nav-catalog-detail__buttons');
@@ -521,7 +446,6 @@ $(document).ready(() => {
 
     // Инициализация основного слайдера
     const mainSwiper = new Swiper('.swiper-product-card', {
-      loop: true,
       thumbs: {
         swiper: thumbsSwiper,
       },
@@ -677,6 +601,51 @@ $(document).ready(() => {
     AW.initSliderTabsNav($(this));
   });
 
+
+  document.querySelectorAll('a[href="#characteristics"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Находим кнопку вкладки "Характеристики" и кликаем по ней
+      const tabButton = document.querySelector('[data-tabs="tab1"]');
+      if (tabButton) tabButton.click();
+
+      // Прокручиваем к блоку характеристик
+      const targetBlock = document.getElementById('characteristics');
+      if (targetBlock) {
+        targetBlock.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  //Карта
+  const map = document.querySelector("#map");
+  if (map) {
+    if ("undefined" !== typeof ymaps) ymaps.ready((() => initMainMap()));
+    else console.warn("Yandex Maps API не загружено для карты #map");
+    function initMainMap() {
+      try {
+        var myMap = new ymaps.Map("map", {
+          center: [55.879207, 37.492428],
+          zoom: 18,
+          controls: ["zoomControl"],
+          behaviors: ["drag"]
+        }, {
+          searchControlProvider: "yandex#search"
+        });
+        const placemark1 = new ymaps.Placemark([55.879207, 37.492428], {}, {
+          iconLayout: "default#image",
+          iconImageHref: "img/location.svg",
+          iconImageSize: [44, 60],
+          iconImageOffset: [20, -10]
+        });
+        myMap.geoObjects.add(placemark1);
+      } catch (error) {
+        console.error("Ошибка при инициализации карты #map:", error);
+      }
+    }
+  }
+
   //Высота
   function syncRowHeights() {
     // Получаем все строки из основной таблицы
@@ -816,9 +785,9 @@ $(document).ready(() => {
     // Скрываем все блоки контента
     contents.forEach(content => {
       if (content.getAttribute('data-product') === filter) {
-        content.style.display = 'block';
+        content.classList.remove('hidden')
       } else {
-        content.style.display = 'none';
+        content.classList.add('hidden')
       }
     });
   }
@@ -890,33 +859,7 @@ $(document).ready(() => {
     }
   });
 
-  //Карта
-  const map = document.querySelector("#map");
-  if (map) {
-    if ("undefined" !== typeof ymaps) ymaps.ready((() => initMainMap()));
-    else console.warn("Yandex Maps API не загружено для карты #map");
-    function initMainMap() {
-      try {
-        var myMap = new ymaps.Map("map", {
-          center: [55.879207, 37.492428],
-          zoom: 18,
-          controls: ["zoomControl"],
-          behaviors: ["drag"]
-        }, {
-          searchControlProvider: "yandex#search"
-        });
-        const placemark1 = new ymaps.Placemark([55.879207, 37.492428], {}, {
-          iconLayout: "default#image",
-          iconImageHref: "img/location.svg",
-          iconImageSize: [44, 60],
-          iconImageOffset: [20, -10]
-        });
-        myMap.geoObjects.add(placemark1);
-      } catch (error) {
-        console.error("Ошибка при инициализации карты #map:", error);
-      }
-    }
-  }
+
 
   let _slideUp = (target, duration = 500, showmore = 0) => {
     if (!target.classList.contains("_slide")) {
@@ -1100,9 +1043,6 @@ $(document).ready(() => {
     }
   };
   rangeInit();
-
-
-
 
 });
 

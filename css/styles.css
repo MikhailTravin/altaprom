@@ -4207,6 +4207,9 @@ a {
   z-index: 10;
   background: #fff;
 }
+.block-recommended__content.hidden {
+  display: none;
+}
 .block-recommended__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
