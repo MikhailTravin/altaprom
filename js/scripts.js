@@ -545,55 +545,56 @@ $(document).ready(() => {
   });
 
   AW.initSliderTabsNav = function ($el) {
-    const $top = $('.tabs__top'); // Контейнер, которому будем добавлять классы
-
-    new Swiper('.tabs-slider-nav', {
+    const $top = $('.tabs__top');
+    const swiper = new Swiper('.tabs-slider-nav', {
       observer: true,
       observeParents: true,
       slidesPerView: 'auto',
       speed: 400,
       spaceBetween: 40,
+      centeredSlides: false, // Отключаем стандартное центрирование
       breakpoints: {
-        0: {
-          spaceBetween: 20,
-        },
-        768: {
-          spaceBetween: 40,
-        },
+        0: { spaceBetween: 20 },
+        768: { spaceBetween: 40 }
       },
-
-      // === Добавляем обработчики событий ===
       on: {
-        init: function () {
-          updateClasses(this);
-        },
-        slideChange: function () {
-          updateClasses(this);
-        },
-        resize: function () {
-          updateClasses(this);
-        },
-        scroll: function () {
-          updateClasses(this);
-        }
+        init: updateClasses,
+        slideChange: updateClasses,
+        resize: updateClasses,
+        scroll: updateClasses
       }
     });
 
-    // === Функция для обновления классов start/end ===
+    // Обработчик клика с центрированием
+    $('.tabs__title').on('click', function () {
+      const $slide = $(this).closest('.swiper-slide');
+      const slideIndex = $slide.index();
+      const slidesCount = swiper.slides.length;
+
+      // Для первого и последнего слайда - просто переходим к ним
+      if (slideIndex === 0 || slideIndex === slidesCount - 1) {
+        swiper.slideTo(slideIndex, 400);
+        return;
+      }
+
+      // Рассчитываем смещение для центрирования
+      const slideWidth = $slide.outerWidth();
+      const containerWidth = swiper.$el[0].offsetWidth;
+      const scrollPos = $slide[0].offsetLeft - (containerWidth / 2) + (slideWidth / 2);
+
+      swiper.setTransition(400);
+      swiper.setTranslate(-scrollPos);
+      swiper.updateProgress();
+      swiper.updateSlidesClasses();
+
+      // Обновляем активный слайд
+      swiper.activeIndex = slideIndex;
+      updateClasses(swiper);
+    });
+
     function updateClasses(swiperInstance) {
       const { isBeginning, isEnd } = swiperInstance;
-
-      if (isBeginning) {
-        $top.addClass('start');
-      } else {
-        $top.removeClass('start');
-      }
-
-      if (isEnd) {
-        $top.addClass('end');
-      } else {
-        $top.removeClass('end');
-      }
+      $top.toggleClass('start', isBeginning).toggleClass('end', isEnd);
     }
   };
 
