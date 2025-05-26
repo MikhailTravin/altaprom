@@ -3683,7 +3683,7 @@ a {
 }
 @media (max-width: 550px) {
   .block-intro .swiper-intro-pagination {
-    width: calc(100% - 1.5px);
+    width: calc(100% - 2px);
     left: 1px;
   }
 }
