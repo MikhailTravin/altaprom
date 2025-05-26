@@ -3761,7 +3761,6 @@ a {
 }
 @media (max-width: 1300px) {
   .block-intro__pic1 {
-    width: auto;
     left: auto;
     right: 0;
     -webkit-transform: translate(0px, 0px);
@@ -3770,8 +3769,9 @@ a {
 }
 @media (max-width: 992px) {
   .block-intro__pic1 {
+    width: 100%;
     position: relative;
-    height: 100%;
+    height: auto;
   }
 }
 .block-intro__pic2 {
