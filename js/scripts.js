@@ -546,13 +546,13 @@ $(document).ready(() => {
 
   AW.initSliderTabsNav = function ($el) {
     const $top = $('.tabs__top');
-    const swiper = new Swiper('.tabs-slider-nav', {
+    const params = {
       observer: true,
       observeParents: true,
       slidesPerView: 'auto',
       speed: 400,
       spaceBetween: 40,
-      centeredSlides: false, // Отключаем стандартное центрирование
+      centeredSlides: false, // По умолчанию выключено
       breakpoints: {
         0: { spaceBetween: 20 },
         768: { spaceBetween: 40 }
@@ -563,9 +563,22 @@ $(document).ready(() => {
         resize: updateClasses,
         scroll: updateClasses
       }
-    });
+    };
 
-    // Обработчик клика с центрированием
+    const swiper = new Swiper('.tabs-slider-nav', params);
+
+    // Функция для обновления centeredSlides в зависимости от ширины экрана
+    function updateCenteredSlides() {
+      const isLargeScreen = window.matchMedia('(max-width: 992px)').matches;
+      swiper.params.centeredSlides = isLargeScreen;
+      swiper.update();
+    }
+
+    // Вызываем при загрузке и на resize
+    window.addEventListener('load', updateCenteredSlides);
+    window.addEventListener('resize', updateCenteredSlides);
+
+    // Обработчик клика по заголовку
     $('.tabs__title').on('click', function () {
       const $slide = $(this).closest('.swiper-slide');
       const slideIndex = $slide.index();
@@ -577,18 +590,22 @@ $(document).ready(() => {
         return;
       }
 
-      // Рассчитываем смещение для центрирования
-      const slideWidth = $slide.outerWidth();
-      const containerWidth = swiper.$el[0].offsetWidth;
-      const scrollPos = $slide[0].offsetLeft - (containerWidth / 2) + (slideWidth / 2);
+      // Рассчитываем смещение для центрирования только если включен режим
+      if (swiper.params.centeredSlides) {
+        const slideWidth = $slide.outerWidth();
+        const containerWidth = swiper.$el[0].offsetWidth;
+        const scrollPos = $slide[0].offsetLeft - (containerWidth / 2) + (slideWidth / 2);
 
-      swiper.setTransition(400);
-      swiper.setTranslate(-scrollPos);
-      swiper.updateProgress();
-      swiper.updateSlidesClasses();
+        swiper.setTransition(400);
+        swiper.setTranslate(-scrollPos);
+        swiper.updateProgress();
+        swiper.updateSlidesClasses();
 
-      // Обновляем активный слайд
-      swiper.activeIndex = slideIndex;
+        swiper.activeIndex = slideIndex;
+      } else {
+        swiper.slideTo(slideIndex, 400);
+      }
+
       updateClasses(swiper);
     });
 
@@ -602,6 +619,31 @@ $(document).ready(() => {
     AW.initSliderTabsNav($(this));
   });
 
+
+  const cartButton = document.querySelector('.block-shopping-cart__button');
+
+  if (cartButton) {
+    const cartClose = document.querySelector('.block-shopping-cart__close');
+    const shadow = document.querySelector('.shadow');
+    // Функция открытия корзины
+    function openCart() {
+      document.body.classList.add('noscroll');
+      document.documentElement.classList.add('shopping-cart-open');
+    }
+
+    // Функция закрытия корзины
+    function closeCart() {
+      document.body.classList.remove('noscroll');
+      document.documentElement.classList.remove('shopping-cart-open');
+    }
+
+    cartButton.addEventListener('click', openCart);
+
+    if (cartClose) {
+      cartClose.addEventListener('click', closeCart);
+      shadow.addEventListener('click', closeCart);
+    }
+  }
 
   document.querySelectorAll('a[href="#characteristics"]').forEach(link => {
     link.addEventListener('click', (e) => {
