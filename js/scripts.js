@@ -1,5 +1,24 @@
 const AW = {};
 
+AW.modal = new HystModal({
+  linkAttributeName: "data-hystmodal",
+  closeOnOverlay: false,
+  afterClose: (modal) => {
+    // switch ($(modal.element).attr('id')) {
+    //   case 'modalConfirm': {
+    //     $('#modalConfirm [data-confirm-ok]').off('click');
+    //     $('#modalConfirm [data-confirm-cancel]').off('click');
+    //     break;
+    //   }
+
+    //   case 'modalVacancy': {
+    //     AW.resetForm($('#modalVacancy form'));
+    //     break;
+    //   }
+    // }
+  },
+});
+
 AW.FANCYBOX_DEFAULTS = {
   hideScrollbar: false,
   Hash: false,
@@ -30,6 +49,7 @@ AW.initMask = function ($field) {
       break;
   }
 };
+
 
 AW.StepCounter = class {
   /**
@@ -620,6 +640,8 @@ $(document).ready(() => {
   });
 
 
+
+
   const cartButton = document.querySelector('.block-shopping-cart__button');
 
   if (cartButton) {
@@ -734,11 +756,13 @@ $(document).ready(() => {
     const input = group.querySelector('.field-input1');
     const label = group.querySelector('.form-group__label');
 
-    function updateLabel() {
-      if (input.value.trim() !== '' || document.activeElement === input) {
-        label.classList.add('active');
-      } else {
-        label.classList.remove('active');
+    if (input) {
+      function updateLabel() {
+        if (input.value.trim() !== '' || document.activeElement === input) {
+          label.classList.add('active');
+        } else {
+          label.classList.remove('active');
+        }
       }
     }
 
