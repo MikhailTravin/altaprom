@@ -640,7 +640,22 @@ $(document).ready(() => {
   });
 
 
+  const imageElement = document.getElementById('submenuImage');
+  const defaultSrc = imageElement.src;
 
+  // Находим все .menu__sublink, которые имеют data-img
+  const links = document.querySelectorAll('.menu__sublink[data-img]');
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', function () {
+      const newSrc = this.getAttribute('data-img');
+      imageElement.src = newSrc;
+    });
+
+    link.addEventListener('mouseleave', function () {
+      imageElement.src = defaultSrc;
+    });
+  });
 
   const cartButton = document.querySelector('.block-shopping-cart__button');
 

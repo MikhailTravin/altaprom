@@ -1782,8 +1782,8 @@ textarea.field-input1 {
   color: var(--theme-color-accent);
 }
 .menu__sublink img {
-  width: auto;
-  height: 280px;
+  width: 100%;
+  height: auto;
 }
 
 .icon-menu {
