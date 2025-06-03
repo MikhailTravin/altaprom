@@ -812,8 +812,7 @@ $(document).ready(() => {
     const contentsTabs = document.querySelectorAll('.tabs__body');
     const tabsScroll = document.querySelector('.tabs__scroll');
     const tabsNavigation = document.querySelector('.tabs__navigation');
-
-    // Only proceed with scroll-related functionality if tabsScroll exists
+    
     if (tabsScroll && tabsNavigation) {
       // Функция обновления классов скролла
       function updateScrollClasses() {
