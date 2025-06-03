@@ -564,81 +564,6 @@ $(document).ready(() => {
     AW.initSliderComparison($(this));
   });
 
-  AW.initSliderTabsNav = function ($el) {
-    const $top = $('.tabs__top');
-    const params = {
-      observer: true,
-      observeParents: true,
-      slidesPerView: 'auto',
-      speed: 400,
-      spaceBetween: 40,
-      centeredSlides: false, // По умолчанию выключено
-      breakpoints: {
-        0: { spaceBetween: 20 },
-        768: { spaceBetween: 40 }
-      },
-      on: {
-        init: updateClasses,
-        slideChange: updateClasses,
-        resize: updateClasses,
-        scroll: updateClasses
-      }
-    };
-
-    const swiper = new Swiper('.tabs-slider-nav', params);
-
-    // Функция для обновления centeredSlides в зависимости от ширины экрана
-    function updateCenteredSlides() {
-      const isLargeScreen = window.matchMedia('(max-width: 992px)').matches;
-      swiper.params.centeredSlides = isLargeScreen;
-      swiper.update();
-    }
-
-    // Вызываем при загрузке и на resize
-    window.addEventListener('load', updateCenteredSlides);
-    window.addEventListener('resize', updateCenteredSlides);
-
-    // Обработчик клика по заголовку
-    $('.tabs__title').on('click', function () {
-      const $slide = $(this).closest('.swiper-slide');
-      const slideIndex = $slide.index();
-      const slidesCount = swiper.slides.length;
-
-      // Для первого и последнего слайда - просто переходим к ним
-      if (slideIndex === 0 || slideIndex === slidesCount - 1) {
-        swiper.slideTo(slideIndex, 400);
-        return;
-      }
-
-      // Рассчитываем смещение для центрирования только если включен режим
-      if (swiper.params.centeredSlides) {
-        const slideWidth = $slide.outerWidth();
-        const containerWidth = swiper.$el[0].offsetWidth;
-        const scrollPos = $slide[0].offsetLeft - (containerWidth / 2) + (slideWidth / 2);
-
-        swiper.setTransition(400);
-        swiper.setTranslate(-scrollPos);
-        swiper.updateProgress();
-        swiper.updateSlidesClasses();
-
-        swiper.activeIndex = slideIndex;
-      } else {
-        swiper.slideTo(slideIndex, 400);
-      }
-
-      updateClasses(swiper);
-    });
-
-    function updateClasses(swiperInstance) {
-      const { isBeginning, isEnd } = swiperInstance;
-      $top.toggleClass('start', isBeginning).toggleClass('end', isEnd);
-    }
-  };
-
-  $('[data-swiper="swiper-tabs-nav"]').each(function () {
-    AW.initSliderTabsNav($(this));
-  });
-
 
   const imageElement = document.getElementById('submenuImage');
   const defaultSrc = imageElement.src;
@@ -883,10 +808,42 @@ $(document).ready(() => {
   //Табы
   const tabs = document.querySelectorAll('.tabs__title');
   const contentsTabs = document.querySelectorAll('.tabs__body');
+  const tabsScroll = document.querySelector('.tabs__scroll');
+  const tabsNavigation = document.querySelector('.tabs__navigation');
+
+  // Функция обновления классов скролла
+  function updateScrollClasses() {
+    const { scrollLeft, scrollWidth, clientWidth } = tabsScroll;
+
+    // Добавляем небольшую погрешность (1px) для браузерных округлений
+    const atStart = scrollLeft <= 1;
+    const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+
+    tabsNavigation.classList.toggle('_at-start', atStart);
+    tabsNavigation.classList.toggle('_at-end', atEnd);
+  }
+
+  // Инициализация при загрузке
+  updateScrollClasses();
+
+  // Обработчик скролла (с троттлингом для производительности)
+  let isScrolling;
+  tabsScroll.addEventListener('scroll', () => {
+    window.clearTimeout(isScrolling);
+    isScrolling = setTimeout(() => {
+      updateScrollClasses();
+    }, 100);
+  });
+
+  // Также обновляем при ресайзе
+  window.addEventListener('resize', updateScrollClasses);
+
+  // Переменная для отслеживания анимации скролла
+  let scrollAnimationId = null;
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const targetTab = tab.dataset.tabs; // Получаем data-tabs значение
+      const targetTab = tab.dataset.tabs;
 
       // 1. Убираем активный класс у всех кнопок
       tabs.forEach(t => t.classList.remove('_tab-active'));
@@ -903,6 +860,61 @@ $(document).ready(() => {
       const activeContent = document.querySelector(`[data-tabs-content="${targetTab}"]`);
       if (activeContent) {
         activeContent.classList.add('_tab-active');
+      }
+
+      // 5. Прокручиваем к активной вкладке (центрируем на мобильных)
+      if (window.innerWidth < 767) {
+        const nav = tabsScroll; // Используем tabsScroll вместо tabsNavigation
+        const tabRect = tab.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+
+        // Если контейнер уже в начале/конце, не центрируем крайние вкладки
+        const atStart = tabsNavigation.classList.contains('_at-start');
+        const atEnd = tabsNavigation.classList.contains('_at-end');
+        const isFirstTab = tab === tabs[0];
+        const isLastTab = tab === tabs[tabs.length - 1];
+
+        if ((atStart && isFirstTab) || (atEnd && isLastTab)) {
+          return; // Не скроллим, если вкладка уже у края
+        }
+
+        // Если вкладка уже видна (левая или правая часть), не скроллим
+        const isVisible = (
+          tabRect.left >= navRect.left &&
+          tabRect.right <= navRect.right
+        );
+
+        if (!isVisible) {
+          const scrollLeft = tab.offsetLeft - (nav.offsetWidth / 2) + (tab.offsetWidth / 2);
+          const maxScroll = nav.scrollWidth - nav.offsetWidth;
+          const clampedScroll = Math.max(0, Math.min(scrollLeft, maxScroll));
+
+          // Отменяем предыдущую анимацию
+          if (scrollAnimationId) {
+            cancelAnimationFrame(scrollAnimationId);
+          }
+
+          nav.scrollTo({
+            left: clampedScroll,
+            behavior: 'smooth'
+          });
+
+          // Ждем завершения анимации скролла
+          const checkScrollEnd = () => {
+            const currentScroll = nav.scrollLeft;
+            if (Math.abs(currentScroll - clampedScroll) > 5) { // Допуск 5px
+              scrollAnimationId = requestAnimationFrame(checkScrollEnd);
+            } else {
+              updateScrollClasses();
+              scrollAnimationId = null;
+            }
+          };
+
+          // Первая проверка после небольшой задержки
+          setTimeout(() => {
+            checkScrollEnd();
+          }, 100);
+        }
       }
     });
   });
