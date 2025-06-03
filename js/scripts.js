@@ -807,117 +807,125 @@ $(document).ready(() => {
 
   //Табы
   const tabs = document.querySelectorAll('.tabs__title');
-  const contentsTabs = document.querySelectorAll('.tabs__body');
-  const tabsScroll = document.querySelector('.tabs__scroll');
-  const tabsNavigation = document.querySelector('.tabs__navigation');
 
-  // Функция обновления классов скролла
-  function updateScrollClasses() {
-    const { scrollLeft, scrollWidth, clientWidth } = tabsScroll;
+  if (tabs) {
+    const contentsTabs = document.querySelectorAll('.tabs__body');
+    const tabsScroll = document.querySelector('.tabs__scroll');
+    const tabsNavigation = document.querySelector('.tabs__navigation');
 
-    // Добавляем небольшую погрешность (1px) для браузерных округлений
-    const atStart = scrollLeft <= 1;
-    const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+    // Only proceed with scroll-related functionality if tabsScroll exists
+    if (tabsScroll && tabsNavigation) {
+      // Функция обновления классов скролла
+      function updateScrollClasses() {
+        const { scrollLeft, scrollWidth, clientWidth } = tabsScroll;
 
-    tabsNavigation.classList.toggle('_at-start', atStart);
-    tabsNavigation.classList.toggle('_at-end', atEnd);
-  }
+        // Добавляем небольшую погрешность (1px) для браузерных округлений
+        const atStart = scrollLeft <= 1;
+        const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
 
-  // Инициализация при загрузке
-  updateScrollClasses();
+        tabsNavigation.classList.toggle('_at-start', atStart);
+        tabsNavigation.classList.toggle('_at-end', atEnd);
+      }
 
-  // Обработчик скролла (с троттлингом для производительности)
-  let isScrolling;
-  tabsScroll.addEventListener('scroll', () => {
-    window.clearTimeout(isScrolling);
-    isScrolling = setTimeout(() => {
+      // Инициализация при загрузке
       updateScrollClasses();
-    }, 100);
-  });
 
-  // Также обновляем при ресайзе
-  window.addEventListener('resize', updateScrollClasses);
-
-  // Переменная для отслеживания анимации скролла
-  let scrollAnimationId = null;
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetTab = tab.dataset.tabs;
-
-      // 1. Убираем активный класс у всех кнопок
-      tabs.forEach(t => t.classList.remove('_tab-active'));
-
-      // 2. Добавляем активный класс текущей кнопке
-      tab.classList.add('_tab-active');
-
-      // 3. Скрываем все блоки с контентом
-      contentsTabs.forEach(content => {
-        content.classList.remove('_tab-active');
+      // Обработчик скролла (с троттлингом для производительности)
+      let isScrolling;
+      tabsScroll.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+          updateScrollClasses();
+        }, 100);
       });
 
-      // 4. Показываем нужный блок
-      const activeContent = document.querySelector(`[data-tabs-content="${targetTab}"]`);
-      if (activeContent) {
-        activeContent.classList.add('_tab-active');
-      }
+      // Также обновляем при ресайзе
+      window.addEventListener('resize', updateScrollClasses);
+    }
 
-      // 5. Прокручиваем к активной вкладке (центрируем на мобильных)
-      if (window.innerWidth < 767) {
-        const nav = tabsScroll; // Используем tabsScroll вместо tabsNavigation
-        const tabRect = tab.getBoundingClientRect();
-        const navRect = nav.getBoundingClientRect();
+    // Переменная для отслеживания анимации скролла
+    let scrollAnimationId = null;
 
-        // Если контейнер уже в начале/конце, не центрируем крайние вкладки
-        const atStart = tabsNavigation.classList.contains('_at-start');
-        const atEnd = tabsNavigation.classList.contains('_at-end');
-        const isFirstTab = tab === tabs[0];
-        const isLastTab = tab === tabs[tabs.length - 1];
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.tabs;
 
-        if ((atStart && isFirstTab) || (atEnd && isLastTab)) {
-          return; // Не скроллим, если вкладка уже у края
+        // 1. Убираем активный класс у всех кнопок
+        tabs.forEach(t => t.classList.remove('_tab-active'));
+
+        // 2. Добавляем активный класс текущей кнопке
+        tab.classList.add('_tab-active');
+
+        // 3. Скрываем все блоки с контентом
+        contentsTabs.forEach(content => {
+          content.classList.remove('_tab-active');
+        });
+
+        // 4. Показываем нужный блок
+        const activeContent = document.querySelector(`[data-tabs-content="${targetTab}"]`);
+        if (activeContent) {
+          activeContent.classList.add('_tab-active');
         }
 
-        // Если вкладка уже видна (левая или правая часть), не скроллим
-        const isVisible = (
-          tabRect.left >= navRect.left &&
-          tabRect.right <= navRect.right
-        );
+        // 5. Прокручиваем к активной вкладке (центрируем на мобильных)
+        if (window.innerWidth < 767 && tabsScroll) {
+          const nav = tabsScroll;
+          const tabRect = tab.getBoundingClientRect();
+          const navRect = nav.getBoundingClientRect();
 
-        if (!isVisible) {
-          const scrollLeft = tab.offsetLeft - (nav.offsetWidth / 2) + (tab.offsetWidth / 2);
-          const maxScroll = nav.scrollWidth - nav.offsetWidth;
-          const clampedScroll = Math.max(0, Math.min(scrollLeft, maxScroll));
+          // Если контейнер уже в начале/конце, не центрируем крайние вкладки
+          const atStart = tabsNavigation?.classList.contains('_at-start');
+          const atEnd = tabsNavigation?.classList.contains('_at-end');
+          const isFirstTab = tab === tabs[0];
+          const isLastTab = tab === tabs[tabs.length - 1];
 
-          // Отменяем предыдущую анимацию
-          if (scrollAnimationId) {
-            cancelAnimationFrame(scrollAnimationId);
+          if ((atStart && isFirstTab) || (atEnd && isLastTab)) {
+            return; // Не скроллим, если вкладка уже у края
           }
 
-          nav.scrollTo({
-            left: clampedScroll,
-            behavior: 'smooth'
-          });
+          // Если вкладка уже видна (левая или правая часть), не скроллим
+          const isVisible = (
+            tabRect.left >= navRect.left &&
+            tabRect.right <= navRect.right
+          );
 
-          // Ждем завершения анимации скролла
-          const checkScrollEnd = () => {
-            const currentScroll = nav.scrollLeft;
-            if (Math.abs(currentScroll - clampedScroll) > 5) { // Допуск 5px
-              scrollAnimationId = requestAnimationFrame(checkScrollEnd);
-            } else {
-              updateScrollClasses();
-              scrollAnimationId = null;
+          if (!isVisible) {
+            const scrollLeft = tab.offsetLeft - (nav.offsetWidth / 2) + (tab.offsetWidth / 2);
+            const maxScroll = nav.scrollWidth - nav.offsetWidth;
+            const clampedScroll = Math.max(0, Math.min(scrollLeft, maxScroll));
+
+            // Отменяем предыдущую анимацию
+            if (scrollAnimationId) {
+              cancelAnimationFrame(scrollAnimationId);
             }
-          };
 
-          // Первая проверка после небольшой задержки
-          setTimeout(() => {
-            checkScrollEnd();
-          }, 100);
+            nav.scrollTo({
+              left: clampedScroll,
+              behavior: 'smooth'
+            });
+
+            // Ждем завершения анимации скролла
+            const checkScrollEnd = () => {
+              const currentScroll = nav.scrollLeft;
+              if (Math.abs(currentScroll - clampedScroll) > 5) { // Допуск 5px
+                scrollAnimationId = requestAnimationFrame(checkScrollEnd);
+              } else {
+                if (tabsNavigation) {
+                  updateScrollClasses();
+                }
+                scrollAnimationId = null;
+              }
+            };
+
+            // Первая проверка после небольшой задержки
+            setTimeout(() => {
+              checkScrollEnd();
+            }, 100);
+          }
         }
-      }
+      });
     });
-  });
+  }
 
   //Фильтр
   const filterMob = document.querySelector('.block-catalog-detail__filter-mob');
