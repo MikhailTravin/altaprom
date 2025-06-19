@@ -1,0 +1,63 @@
+<div class="block-feedback">
+    <img loading="lazy" src="img/image12.webp" alt="" class="block-feedback__bg1">
+    <img loading="lazy" src="img/image12.webp" alt="" class="block-feedback__bg2">
+    <div class="container">
+        <div class="block-feedback__content">
+            <div class="block-line">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="block-feedback__left">
+                <h2 class="title2">
+                    возникли сложности
+                    <strong>с выбором оборудования?</strong>
+                </h2>
+                <div class="block-feedback__text">
+                    Заполните форму и наш специалист свяжется с Вами в ближайшее время.
+                </div>
+            </div>
+            <form data-validate action="feedback.php" class="block-feedback__right">
+                <div class="form-grid1 form-feedback">
+                    <div class="form-grid1__row">
+                        <div class="form-group">
+                            <input class="field-input1" id="feedback_name3" name="feedback_name" placeholder=""
+                                type="text" required>
+                            <label for="feedback_name3" class="form-group__label form-group__label_req">Имя</label>
+                        </div>
+                    </div>
+                    <div class="form-grid1__row">
+                        <div class="form-group">
+                            <input class="field-input1" id="feedback_phone" name="feedback_phone" placeholder=""
+                                type="text" required>
+                            <label for="feedback_phone" class="form-group__label form-group__label_req">Телефон</label>
+                        </div>
+                    </div>
+                    <div class="form-grid1__row">
+                        <div class="form-group">
+                            <input class="field-input1" data-type="email" id="feedback_email" name="feedback_email"
+                                placeholder="" type="text" required>
+                            <label for="feedback_email" class="form-group__label form-group__label_req">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="form-grid1__row">
+                        <div class="form-group">
+                            <textarea class="field-input1" id="feedback_message" name="feedback_message"
+                                placeholder=" "></textarea>
+                            <label for="feedback_message" class="form-group__label">Сообщение</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-feedback__buttons">
+                    <div class="textblock1 textblock1_small">Нажимая на кнопку "Отправить заявку", Вы
+                       соглашаетесь на <a href="#">обработку персональных данных</a> и c
+                        <a href="#">публичной офертой</a>.
+                    </div>
+                    <button class="btn btn_primary" type="submit">Отправить
+                        заявку</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Дозаторы</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Главная
+							</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Каталог
+							</a>
+						</li>
+						<li class="breadcrumbs__item is-active">
+							<span>Дозаторы</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="heading-complex">
+				<div class="container">
+					<div class="heading-complex__content">
+						<div class="heading-complex__left">
+							<h1 class="title2">
+								<strong>Дозаторы<span>[3]</span></strong>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="block-catalog-detail">
+				<div class="container">
+					<div class="block-catalog-detail__content">
+						<div class="block-catalog-detail__right">
+							<div class="nav-catalog-detail__items">
+								<div class="block-catalog-detail__nav nav-catalog-detail">
+									<div class="nav-catalog-detail__title">категории</div>
+									<a href="catalog.html" class="nav-catalog-detail__link">
+										<svg aria-hidden="true" width="16" height="16">
+											<use xlink:href="img/sprite.svg#arrow1"></use>
+										</svg>
+										<span>Дозаторы</span>
+									</a>
+									<div data-swiper-wrapper="catalog-detail" class="nav-catalog-detail__buttons">
+										<div data-swiper="catalog-detail" class="nav-catalog-detail__slider swiper">
+											<div class="nav-catalog-detail__wrapper swiper-wrapper">
+												<a href="#" class="nav-catalog-detail__slide swiper-slide">
+													<span>Гравиметрические дозаторы</span>
+												</a>
+												<a href="#" class="nav-catalog-detail__slide swiper-slide">
+													<span>Шнековые дозаторы</span>
+												</a>
+											</div>
+										</div>
+										<div class="nav-catalog-detail__arrows">
+											<button class="swiper-nav swiper-nav_prev" type="button">
+												<svg aria-hidden="true" width="16" height="16">
+													<use xlink:href="img/sprite.svg#arrow1"></use>
+												</svg>
+												<span class="v-h">Назад</span>
+											</button>
+											<button class="swiper-nav swiper-nav_next" type="button">
+												<svg aria-hidden="true" width="16" height="16">
+													<use xlink:href="img/sprite.svg#arrow1"></use>
+												</svg>
+												<span class="v-h">Вперед</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="block-catalog-detail__filter-mob">
+									<svg aria-hidden="true" width="20" height="18">
+										<use xlink:href="img/sprite.svg#filter"></use>
+									</svg>
+									<span>Фильтры</span>
+								</div>
+								<div class="block-catalog-detail__filter filter-catalog-detail">
+									<div class="filter-catalog-detail__title">
+										фильтры
+										<button class="filter-catalog-detail__close">
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#close1"></use>
+											</svg>
+											<span class="v-h">Закрыть</span>
+										</button>
+									</div>
+									<div data-spollers class="filter-catalog-detail__spollers">
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Цена, USD</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<div class="filter-catalog-detail__rating">
+													<div class="filter-catalog-detail__values">
+														<div class="filter-catalog-detail__value">
+															<div class="filter-catalog-detail__input">
+																<label for="price-start" class="price-lbl">от</label>
+																<input id="price-start" placeholder="0" value="0"
+																	type="text">
+															</div>
+														</div>
+														<div class="filter-catalog-detail__value">
+															<div class="filter-catalog-detail__input">
+																<label for="price-end" class="price-lbl">до</label>
+																<input id="price-end" placeholder="0" value="165 760"
+																	type="text">
+															</div>
+														</div>
+													</div>
+													<div class="filter-catalog-detail__range"></div>
+												</div>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Производитель</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">SHINI [3]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Тип дозатора</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span
+																class="checkbox-text__label">гравиметрический [2]</span>
+														</label>
+													</li>
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">объменый [1]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Производительность, кг/ч</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span
+																class="checkbox-text__label">гравиметрический [2]</span>
+														</label>
+													</li>
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">объменый [1]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Модели шнекового дозатора</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span
+																class="checkbox-text__label">гравиметрический [2]</span>
+														</label>
+													</li>
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">объменый [1]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Модели гравимитрического дозатора</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span
+																class="checkbox-text__label">гравиметрический [2]</span>
+														</label>
+													</li>
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">объменый [1]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-catalog-detail__item">
+											<button type="button" data-spoller
+												class="filter-catalog-detail__spoller-title">
+												<span>Количество компонентов</span>
+												<svg aria-hidden="true" width="16" height="9">
+													<use xlink:href="img/sprite.svg#chevron2"></use>
+												</svg>
+											</button>
+											<div class="filter-catalog-detail__body">
+												<ul class="checklist">
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span
+																class="checkbox-text__label">гравиметрический [2]</span>
+														</label>
+													</li>
+													<li class="checklist__item">
+														<label class="checkbox-text">
+															<span class="checkbox">
+																<input class="checkbox__input" type="checkbox"
+																	name="chb3">
+																<span class="checkbox__visual">
+																	<svg width="10" height="8" class="checkbox__mark"
+																		aria-hidden="true">
+																		<use xlink:href="img/sprite.svg#mark1"></use>
+																	</svg>
+																</span>
+															</span>
+															<span class="checkbox-text__label">объменый [1]</span>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="filter-catalog-detail__buttons">
+										<button type="button" class="btn btn_black">Показать [1]</button>
+										<button type="button" class="btn btn_primary">Сбросить</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="block-catalog-detail__body">
+							<div class="block-catalog-detail__cards">
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">от 5 000 $</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">от 5 000 $</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product">
+									<div class="card-product__image">
+										<img loading="lazy" src="img/image19.webp" alt="">
+									</div>
+									<div class="card-product__item">
+										<div class="card-product__title">
+											Шнековый дозатор красителя SHINI серии
+											SCM
+										</div>
+										<div class="card-product__bottom">
+											<div class="card-product__price">Цена по запросу</div>
+											<div class="card-product__buttons">
+												<a href="#" class="btn-order btn btn_primary">Заказать</a>
+												<a href="product-card.html"
+													class="btn-more btn btn_primary ">Подробнее</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__front">
+										<div class="card-product__descr">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Характеристики</div>
+												<ul>
+													<li>
+														<span>простая конструкция</span>
+													</li>
+													<li>
+														<span>быстрый монтаж
+															и чистка</span>
+													</li>
+													<li>
+														<span>магнитная ловушка</span>
+													</li>
+													<li>
+														<span>микропроцессорное управление</span>
+													</li>
+													<li>
+														<span>жк индикатор</span>
+													</li>
+												</ul>
+											</div>
+											<div class="card-product__lists">
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производитель</div>
+													<span>SHINI</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Тип дозатора</div>
+													<span>объемный</span>
+												</div>
+												<div class="card-product__list">
+													<div class="card-product__list-title">Производительность, кг/ч</div>
+													<span>0.1 - 130</span>
+												</div>
+											</div>
+										</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% include 'blocks/pagging.njk' %}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% include 'blocks/information.njk' %}
+
+			{% include 'blocks/feedback.njk' %}
+
+		</main>
+		{% include 'blocks/footer.njk' %}
+	</div>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

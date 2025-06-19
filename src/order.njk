@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Оформление заказа</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Главная
+							</a>
+						</li>
+						<li class="breadcrumbs__item is-active">
+							<span>Оформление
+								заказа</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="heading-complex">
+				<div class="container">
+					<div class="heading-complex__content">
+						<div class="heading-complex__left">
+							<h1 class="title2">
+								Оформление
+								<strong>заказа</strong>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="block-order">
+				<div class="container">
+					<form data-validate action="#" class="block-order__content" novalidate="novalidate">
+						<div class="block-order__left">
+							<div class="block-order__top">
+								<div class="block-order__title">
+									данные получателя
+								</div>
+								<div class="block-order__subtitle">
+									Заполните простую форму, и наши менеджеры свяжутся с вами, ответят на любые вопросы
+									и подготовят счет на оплату
+								</div>
+							</div>
+							<div class="form-other">
+								<div class="form-grid1">
+									<div class="form-grid1__row">
+										<div class="form-group">
+											<input class="field-input1" id="feedback_name2" name="feedback_name"
+												placeholder type="text" required>
+											<label for="feedback_name2"
+												class="form-group__label form-group__label_req">Имя</label>
+										</div>
+									</div>
+									<div class="form-grid1__row">
+										<div class="form-group">
+											<input class="field-input1" data-type="email" id="feedback_email"
+												name="feedback_email" placeholder type="text" required>
+											<label for="feedback_email"
+												class="form-group__label form-group__label_req">E-mail</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-grid1">
+									<div class="form-grid1__row">
+										<div class="form-group">
+											<input class="field-input1" id="feedback_phone3" name="feedback_phone"
+												placeholder type="text" required>
+											<label for="feedback_phone3"
+												class="form-group__label form-group__label_req">Телефон</label>
+										</div>
+									</div>
+									<div class="form-grid1__row">
+										<div class="form-group">
+											<input class="field-input1" id="feedback_address" name="feedback_address"
+												placeholder type="text">
+											<label for="feedback_address" class="form-group__label">Адрес
+												доставки</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-grid1">
+									<div class="form-grid1__row">
+										<div class="form-group">
+											<textarea class="field-input1" id="feedback_message" name="feedback_message"
+												placeholder></textarea>
+											<label for="feedback_message"
+												class="form-group__label label-textarea">Комментарий к
+												заказу</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="block1">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<div class="contacts-info">
+							<div class="contacts-info__item">
+								<div class="contacts-info__name">
+									ваш заказ
+								</div>
+								<div class="contacts-info__cards">
+									<a href="#" class="card-order">
+										<div class="card-order__top">
+											<div class="card-order__title">
+												Шнековый дозатор красителя SHINI
+												серии
+												SCM
+											</div>
+											<div class="card-order__col">1шт.</div>
+										</div>
+										<div class="card-order__price">от 5 000 $</div>
+									</a>
+									<a href="#" class="card-order">
+										<div class="card-order__top">
+											<div class="card-order__title">
+												Шнековый дозатор красителя SHINI
+												серии
+												SCM
+											</div>
+											<div class="card-order__col">1шт.</div>
+										</div>
+										<div class="card-order__price">от 5 000 $</div>
+									</a>
+									<a href="#" class="card-order">
+										<div class="card-order__top">
+											<div class="card-order__title">
+												Шнековый дозатор красителя SHINI
+												серии
+												SCM
+											</div>
+											<div class="card-order__col">1шт.</div>
+										</div>
+										<div class="card-order__price">от 5 000 $</div>
+									</a>
+								</div>
+								<div class="contacts-info__buttons">
+									<button type="submit" class="btn btn_primary">Оформить заказ</button>
+									<div class="textblock1 textblock1_small">Нажимая на кнопку "Оформить заказ", Вы
+										соглашаетесь на <a href="#">обработку персональных данных</a> и c
+										<a href="#">публичной офертой</a>.
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</main>
+		{% include 'blocks/footer.njk' %}
+	</div>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

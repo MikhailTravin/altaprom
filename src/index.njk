@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Главная страница</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<section class="block-intro">
+				<div class="container">
+					<div data-swiper-wrapper="intro" class="block-intro__content">
+						<div class="block-line">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+						<div class="block-intro__body">
+							<h1 class="title1">
+								оборудование
+								для переработки
+								пластмасс
+								<span>бренда Shini</span>
+							</h1>
+							<a class="btn btn_primary" href="catalog.html">Подобрать оборудование</a>
+						</div>
+						<img class="block-intro__pic2" src="img/image2.webp" alt="">
+						<div data-swiper="intro" class="swiper swiper-intro">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="block-intro__images">
+										<img class="block-intro__pic1" src="img/image4.webp" alt="">
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="block-intro__images">
+										<img class="block-intro__pic1" src="img/image3.webp" alt="">
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="block-intro__images">
+										<img class="block-intro__pic1" src="img/image4.webp" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div data-swiper="intro-pagination" class="swiper swiper-intro-pagination">
+							<div class="swiper-wrapper">
+								<a href="catalog.html" class="swiper-slide ">
+									<div class="block-intro__pagination-item">
+										<div class="block-intro__pagination-top">
+											<span>01</span>
+											Дозаторы
+										</div>
+										<span class="block-intro__pagination-link">
+											В каталог
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</div>
+								</a>
+								<a href="catalog.html" class="swiper-slide">
+									<div class="block-intro__pagination-item">
+										<div class="block-intro__pagination-top">
+											<span>02</span>
+											Загрузчики
+										</div>
+										<span class="block-intro__pagination-link">
+											В каталог
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</div>
+								</a>
+								<a href="catalog.html" class="swiper-slide ">
+									<div class="block-intro__pagination-item">
+										<div class="block-intro__pagination-top">
+											<span>03</span>
+											Смесители
+										</div>
+										<span class="block-intro__pagination-link">
+											В каталог
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="block-intro__arrows">
+							<button class="swiper-nav swiper-nav_next block-intro__nav-next" type="button">
+								<svg aria-hidden="true" width="20" height="20">
+									<use xlink:href="img/sprite.svg#arrow1"></use>
+								</svg>
+								<span class="v-h">Вперед</span>
+							</button>
+							<button class="swiper-nav swiper-nav_prev block-intro__nav-prev" type="button">
+								<svg aria-hidden="true" width="20" height="20">
+									<use xlink:href="img/sprite.svg#arrow1"></use>
+								</svg>
+								<span class="v-h">Назад</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container">
+				<div class="block1 main-block4">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+			<section class="block-catalogs">
+				<div class="heading-complex">
+					<div class="container">
+						<div class="heading-complex__content">
+							<div class="heading-complex__left">
+								<h2 class="title2">
+									Популярные категории <strong>оборудования</strong>
+								</h2>
+							</div>
+							<div class="heading-complex__right">
+								<div class="heading-complex__link">
+									<a href="catalog.html">
+										Весь каталог
+										<svg aria-hidden="true" width="16" height="16">
+											<use xlink:href="img/sprite.svg#arrow1"></use>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block-catalogs__content">
+					<div class="container">
+						<div class="block-catalogs__cards">
+							<div class="block-line">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">Дозаторы</div>
+									<div class="card-catalog__number">[3]</div>
+								</div>
+								<img loading="lazy" src="img/image1.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">Загрузчики</div>
+									<div class="card-catalog__number">[5]</div>
+								</div>
+								<img loading="lazy" src="img/image5.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">Сушилки</div>
+									<div class="card-catalog__number">[6]</div>
+								</div>
+								<img loading="lazy" src="img/image6.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">Термостаты</div>
+									<div class="card-catalog__number">[2]</div>
+								</div>
+								<img loading="lazy" src="img/image7.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">Ротаметры</div>
+									<div class="card-catalog__number">[1]</div>
+								</div>
+								<img loading="lazy" src="img/image8.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">смесители</div>
+									<div class="card-catalog__number">[3]</div>
+								</div>
+								<img loading="lazy" src="img/image9.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">клапаны</div>
+									<div class="card-catalog__number">[1]</div>
+								</div>
+								<img loading="lazy" src="img/image10.webp" alt="" class="card-catalog__image">
+							</a>
+							<a href="catalog-detail.html" class="card-catalog">
+								<div class="card-catalog__top">
+									<div class="card-catalog__title">дробилки</div>
+									<div class="card-catalog__number">[5]</div>
+								</div>
+								<img loading="lazy" src="img/image11.webp" alt="" class="card-catalog__image">
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container">
+				<div class="block1 main-block4">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+			{% include 'blocks/feedback.njk' %}
+
+			<div class="container">
+				<div class="block1 main-block2">
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+			<section class="block-recommended">
+				<div class="heading-complex">
+					<div class="container">
+						<div class="heading-complex__content">
+							<div class="heading-complex__left">
+								<h2 class="title2">
+									рекомендуемое <strong>оборудования</strong>
+								</h2>
+								<button type="button" data-filter="hit"
+									class="heading-complex__button-filter active">хиты продаж</button>
+							</div>
+							<div class="heading-complex__right">
+								<button type="button" data-filter="new"
+									class="heading-complex__button-filter">новинки</button>
+								<div class="heading-complex__link">
+									<a href="catalog.html">
+										Весь каталог
+										<svg aria-hidden="true" width="16" height="16">
+											<use xlink:href="img/sprite.svg#arrow1"></use>
+										</svg>
+									</a>
+								</div>
+							</div>
+							<div class="heading-complex__filter">
+								<button type="button" data-filter="hit"
+									class="heading-complex__button-filter active">хиты продаж</button>
+								<button type="button" data-filter="new"
+									class="heading-complex__button-filter">новинки</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div data-product="hit" class="block-recommended__content">
+					<div class="container">
+						<div class="block-recommended__cards">
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image13.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Шнековый дозатор красителя SHINI серии SCM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">от 5 000 $</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image14.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Вертикальный миксер-смеситель полимерного сырья SHINI серии SVM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image15.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Накопительный смеситель для пластмасс и красителей SHINI серии SSM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image16.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Вакуумный загрузчик SHINI серии SAL
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div data-product="new" class="block-recommended__content hidden">
+					<div class="container">
+						<div class="block-recommended__cards">
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image15.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Накопительный смеситель для пластмасс и красителей SHINI серии SSM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image16.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Вакуумный загрузчик SHINI серии SAL
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image13.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Шнековый дозатор красителя SHINI серии SCM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">от 5 000 $</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-product">
+								<div class="card-product__image">
+									<img loading="lazy" src="img/image14.webp" alt="">
+								</div>
+								<div class="card-product__item">
+									<div class="card-product__title">
+										Вертикальный миксер-смеситель полимерного сырья SHINI серии SVM
+									</div>
+									<div class="card-product__bottom">
+										<div class="card-product__price">Цена по запросу</div>
+										<div class="card-product__buttons">
+											<a href="#" class="btn-order btn btn_primary">Заказать</a>
+											<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-product__front">
+									<div class="card-product__descr">
+										<div class="card-product__list">
+											<div class="card-product__list-title">Характеристики</div>
+											<ul>
+												<li>
+													<span>простая конструкция</span>
+												</li>
+												<li>
+													<span>быстрый монтаж
+														и чистка</span>
+												</li>
+												<li>
+													<span>магнитная ловушка</span>
+												</li>
+												<li>
+													<span>микропроцессорное управление</span>
+												</li>
+												<li>
+													<span>жк индикатор</span>
+												</li>
+											</ul>
+										</div>
+										<div class="card-product__lists">
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производитель</div>
+												<span>SHINI</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Тип дозатора</div>
+												<span>объемный</span>
+											</div>
+											<div class="card-product__list">
+												<div class="card-product__list-title">Производительность, кг/ч</div>
+												<span>0.1 - 130</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-product__buttons">
+										<a href="#" class="btn-order btn btn_primary">Заказать</a>
+										<a href="product-card.html" class="btn-more btn btn_primary ">Подробнее</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container">
+				<div class="block1">
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+			<section class="block-about">
+				<div class="container">
+					<div class="block1 main-block1">
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<div class="block-about__top">
+					<div class="heading-complex">
+						<div class="container">
+							<div class="heading-complex__content">
+								<h2 class="title2">
+									Компания «ALTAPROM» — один из лидеров на российском рынке
+									<strong>оборудования для
+										переработки пластика.</strong>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="block-about__content">
+							<div class="block-about__descr">
+								<div class="block-about__text">
+									<p>
+										«ALTAPROM» - это полный комплекс оборудования, это решение любых задач в
+										процессе
+										переработки
+										разных видов пластика.
+									</p>
+									<p>
+										Мы команда профессионалов, которая работает на результат. Специалисты нашей
+										компании нацелены на стопроцентное решение задачи, поставленной клиентом.
+										Благодаря
+										профессионализму, опыту, упорству и партнерским связям, нам всегда удается
+										достигать
+										намеченной
+										цели.
+									</p>
+								</div>
+								<div class="block-about__text">
+									<p>
+										Наше главное отличие, оно же и достоинство – индивидуальный подход к каждому
+										клиенту.
+										Индивидуальная программа лояльности дает огромные преференции постоянным
+										клиентам.
+									</p>
+									<p>
+										Пользоваться нашим сервисом легко – понятный интерфейс, в постоянном доступе
+										технические
+										документы, техническая поддержка менеджеров с инженерным образованием.
+									</p>
+								</div>
+							</div>
+							<a href="#" class="btn btn_primary">Подробнее о компании</a>
+						</div>
+					</div>
+				</div>
+				<div class="block-about__bottom">
+					<div class="container">
+						<div class="block-about__icons">
+							<div class="block-about__icon">
+								<div class="block-about__pic">
+									<img loading="lazy" src="img/icon1.svg" alt="">
+								</div>
+								<span>
+									Полная техническая
+									<br>
+									поддержка
+								</span>
+							</div>
+							<div class="block-about__icon">
+								<div class="block-about__pic">
+									<img loading="lazy" src="img/icon2.svg" alt="">
+								</div>
+								<span>
+									Заводские цены и индивидуальные
+									<br>
+									программы лояльности
+								</span>
+							</div>
+							<div class="block-about__icon">
+								<div class="block-about__pic">
+									<img loading="lazy" src="img/icon3.svg" alt="">
+								</div>
+								<span>
+									Онлайн консультации
+									<br>
+									технических специалистов
+								</span>
+							</div>
+							<div class="block-about__icon">
+								<div class="block-about__pic">
+									<img loading="lazy" src="img/icon4.svg" alt="">
+								</div>
+								<span>
+									Бесплатное гарантийное
+									<br>
+									обслуживание
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="block1 main-block4">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</section>
+
+		</main>
+		{% include 'blocks/footer.njk' %}
+	</div>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

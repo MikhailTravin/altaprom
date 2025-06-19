@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Контакты</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Главная
+							</a>
+						</li>
+						<li class="breadcrumbs__item is-active"><span>Контакты</span></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="heading-complex">
+				<div class="container">
+					<div class="heading-complex__content">
+						<div class="heading-complex__left">
+							<h1 class="title2">
+								контактная
+								<strong>информация</strong>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="block-contacts">
+				<div class="container">
+					<div class="block-contacts__body">
+						<div class="block-contacts__left">
+							<div class="block-contacts__columns">
+								<div class="block-contacts__column">
+									<div class="block-contacts__item">
+										<div class="block-contacts__titles">
+											<div class="block-contacts__title">адрес офиса (склада)</div>
+											<div class="block-contacts__subtitle contacts-address">
+												г. Москва, ул. Маршала
+												Федоренко, д. 3
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="block-contacts__columns">
+								<div class="block-contacts__column">
+									<div class="block-contacts__item">
+										<div class="block-contacts__titles">
+											<div class="block-contacts__title">телефон</div>
+											<a href="tel:74999385424" class="block-contacts__subtitle contacts-phone">+7
+												(499)
+												938-54-24</a>
+										</div>
+									</div>
+								</div>
+								<div class="block-contacts__column">
+									<div class="block-contacts__item">
+										<div class="block-contacts__titles">
+											<div class="block-contacts__title">E-mail</div>
+											<a href="mailto:info@altaprom.ru" class="block-contacts__subtitle">
+												info@altaprom.ru
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="block-contacts__column">
+									<div class="block-contacts__item">
+										<div class="block-contacts__titles">
+											<div class="block-contacts__title">часы работы</div>
+											<div class="block-contacts__subtitle">
+												с 9:00 до 18:00
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="map" class="block-contacts__map"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="block1">
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+			{% include 'blocks/feedback.njk' %}
+
+		</main>
+		{% include 'blocks/footer.njk' %}
+	</div>
+	<script
+		src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&amp;lang=ru_RU&amp;_v=20240623012845&_v=20250429150847"></script>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

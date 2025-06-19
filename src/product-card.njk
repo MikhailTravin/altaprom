@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Карточка товара</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Главная
+							</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a href="catalog.html">
+								Каталог
+							</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a href="catalog-detail.html">
+								Дозаторы
+							</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a href="catalog-detail.html">
+								Гравиметрические дозаторы
+							</a>
+						</li>
+						<li class="breadcrumbs__item is-active">
+							<span>
+								Гравиметрический дозатор SHINI серии SGD-12
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="block-product">
+				<div class="block-product__top top-block-product">
+					<div class="container">
+						<div class="top-block-product__content">
+							<div data-swiper-wrapper="product-card" class="top-block-product__right">
+								<div data-swiper="product-card" class="swiper swiper-product-card">
+									<div class="swiper-wrapper">
+										<a href="img/image1.webp" data-fancybox="gallery" class="swiper-slide">
+											<img src="img/image1.webp" alt="">
+										</a>
+										<a href="img/image1.webp" data-fancybox="gallery" class="swiper-slide">
+											<img src="img/image1.webp" alt="">
+										</a>
+										<a href="img/image1.webp" data-fancybox="gallery" class="swiper-slide">
+											<img src="img/image1.webp" alt="">
+										</a>
+										<a href="img/image1.webp" data-fancybox="gallery" class="swiper-slide">
+											<img src="img/image1.webp" alt="">
+										</a>
+										<a href="img/image1.webp" data-fancybox="gallery" class="swiper-slide">
+											<img src="img/image1.webp" alt="">
+										</a>
+									</div>
+									<div class="swiper-navs">
+										<button class="swiper-nav swiper-nav_prev" type="button">
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+											<span class="v-h">Назад</span>
+										</button>
+										<button class="swiper-nav swiper-nav_next" type="button">
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+											<span class="v-h">Вперед</span>
+										</button>
+									</div>
+								</div>
+								<div class="top-block-product__thumbs">
+									<div data-swiper="product-card-thumbs" class="swiper swiper-thumbs">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide">
+												<img src="img/image1.webp" alt="">
+											</div>
+											<div class="swiper-slide">
+												<img src="img/image1.webp" alt="">
+											</div>
+											<div class="swiper-slide">
+												<img src="img/image1.webp" alt="">
+											</div>
+											<div class="swiper-slide">
+												<img src="img/image1.webp" alt="">
+											</div>
+											<div class="swiper-slide">
+												<img src="img/image1.webp" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="top-block-product__left">
+								<h1>
+									Гравиметрический дозатор SHINI
+									<br>
+									серии SGD-12
+								</h1>
+								<div class="top-block-product__body">
+									<div class="top-block-product__column">
+										<div class="top-block-product__title">Модели</div>
+										<ul class="checklist radiolist">
+											<li class="checklist__item">
+												<label class="checkbox-text">
+													<span class="radio">
+														<input checked class="radio__input" type="radio" name="rad1">
+														<span class="radio__visual">SGD-12</span>
+													</span>
+												</label>
+											</li>
+											<li class="checklist__item">
+												<label class="checkbox-text">
+													<span class="radio">
+														<input class="radio__input" type="radio" name="rad1">
+														<span class="radio__visual">SGD-16</span>
+													</span>
+												</label>
+											</li>
+											<li class="checklist__item">
+												<label class="checkbox-text">
+													<span class="radio">
+														<input class="radio__input" type="radio" name="rad1">
+														<span class="radio__visual">SGD-20</span>
+													</span>
+												</label>
+											</li>
+											<li class="checklist__item">
+												<label class="checkbox-text">
+													<span class="radio">
+														<input class="radio__input" type="radio" name="rad1">
+														<span class="radio__visual">SGD-30</span>
+													</span>
+												</label>
+											</li>
+											<li class="checklist__item">
+												<label class="checkbox-text">
+													<span class="radio">
+														<input class="radio__input" type="radio" name="rad1">
+														<span class="radio__visual">SGD-D</span>
+													</span>
+												</label>
+											</li>
+										</ul>
+									</div>
+									<div class="top-block-product__column">
+										<div class="top-block-product__title">Технические характеристики</div>
+										<div
+											class="top-block-product__characteristics characteristics-product mini-characteristics">
+											<ul>
+												<li>
+													<div class="characteristics-product__name">Производительность, кг/ч
+													</div>
+													<div class="characteristics-product__value">0.04-3.6</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">Мощность двигателя, кВт
+													</div>
+													<div class="characteristics-product__value">0.06</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">Мощность миксера, кВт
+													</div>
+													<div class="characteristics-product__value">0.09</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">Количество компонентов
+													</div>
+													<div class="characteristics-product__value">1</div>
+												</li>
+											</ul>
+										</div>
+										<a href="#characteristics" class="top-block-product__link">Все
+											характеристики</a>
+									</div>
+								</div>
+								<button type="button" class="btn btn_primary">В корзину</button>
+								<p>
+									Оформление заказа не обязывает Вас покупке. После оформления заказа мы свяжемся с
+									Вами для обсуждения деталей.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block-product__bottom bottom-block-product">
+					<div class="tabs">
+						<div class="tabs__top">
+							<div class="container">
+								<nav class="tabs__navigation">
+									<div class="tabs__scroll">
+										<button id="characteristics" data-tabs="tab1" type="button"
+											class="tabs__title _tab-active characteristics">характеристики</button>
+										<button data-tabs="tab2" type="button" class="tabs__title">описание</button>
+										<button data-tabs="tab3" type="button" class="tabs__title">сравнение
+											моделей</button>
+										<button data-tabs="tab4" type="button" class="tabs__title">оплата и
+											доставка</button>
+										<button data-tabs="tab5" type="button" class="tabs__title">документация</button>
+									</div>
+								</nav>
+							</div>
+						</div>
+						</nav>
+					</div>
+				</div>
+				<div class="tabs__bottom">
+					<div class="container">
+						<div class="tabs__content">
+							<div data-tabs-content="tab1" class="tabs__body _tab-active">
+								<div class="tabs__descr descr-tabs">
+									<div class="descr-tabs__column">
+										<div class="descr-tabs__title ">характеристики</div>
+										<div class="descr-tabs__characteristics characteristics-product">
+											<ul>
+												<li>
+													<div class="characteristics-product__name">Мощность
+														двигателя, кВт
+													</div>
+													<div class="characteristics-product__value">0.06</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">Мощность миксера,
+														кВт
+													</div>
+													<div class="characteristics-product__value">0.09</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Внешний диаметр шнека, мм
+													</div>
+													<div class="characteristics-product__value">12</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Производительность, кг/ч
+													</div>
+													<div class="characteristics-product__value">0.04-3.6</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Бункер, л
+													</div>
+													<div class="characteristics-product__value">10</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Передаточное число
+													</div>
+													<div class="characteristics-product__value">38:1</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Бункер основного материала, л
+													</div>
+													<div class="characteristics-product__value">15 (опция)</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Миксер
+													</div>
+													<div class="characteristics-product__value">опция</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Тяжелая база
+													</div>
+													<div class="characteristics-product__value">опция</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Высота, мм
+													</div>
+													<div class="characteristics-product__value">610</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Длина, мм
+													</div>
+													<div class="characteristics-product__value">645</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Ширина, мм
+													</div>
+													<div class="characteristics-product__value">441</div>
+												</li>
+												<li>
+													<div class="characteristics-product__name">
+														Масса, кг
+													</div>
+													<div class="characteristics-product__value">36</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="descr-tabs__column descr-benefits">
+										<div class="descr-tabs__title">Основные преимущества</div>
+										<ul>
+											<li>
+												может использоваться с термопластавтоматами и экструдерами
+											</li>
+											<li>
+												дозатор оснащен функцией принудительной очистки
+											</li>
+											<li>
+												память позволяет хранить до 100 рецептур
+											</li>
+											<li>звуковой сигнал</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div data-tabs-content="tab2" class="tabs__body">
+								<div class="tabs__descr descr-tabs">
+									<div class="descr-tabs__column">
+										<div class="descr-tabs__title">описание</div>
+										<div class="descr-tabs__text">
+											<p>
+												Гравиметрический дозатор для ТПА серии SGD предназначен для
+												автоматического пропорционального смешивания первичного сырья,
+												вторичного материала, супер концентратов, красителей и прочих
+												добавок. Дозаторы комплектуются двигателями
+												с передаточным числом 38:1 и дозирующими шнеками с диаметром 12,
+												14 или 16 мм.
+												Серия представлена тремя моделями с производительностью от 0,04
+												до 32 кг/ч.
+											</p>
+											<p>
+												Дозаторы можно комбинировать при необходимости смешивать большее
+												количество компонентов, такие системы изготавливаются по желанию
+												заказчика. При возникновении сбоя в работе гравиметрического
+												дозатора для ТПА происходит аварийная остановка
+												и предупредительный звуковой сигнал. Гравиметрический дозатор
+												для ТПА может использоваться с термопластавтоматами и
+												экструдерами.
+											</p>
+										</div>
+									</div>
+									<div class="descr-tabs__column descr-benefits">
+										<div class="descr-tabs__title">Основные преимущества</div>
+										<ul>
+											<li>
+												может использоваться с термопластавтоматами и экструдерами
+											</li>
+											<li>
+												дозатор оснащен функцией принудительной очистки
+											</li>
+											<li>
+												память позволяет хранить до 100 рецептур
+											</li>
+											<li>звуковой сигнал</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div data-tabs-content="tab3" class="tabs__body">
+								<div class="tabs__comparison comparison-tabs">
+									<div class="comparison-tabs__title">сравнение моделей</div>
+									<div class="comparison-tabs__tables">
+										<div class="comparison-tabs__main-table">
+											<div class="comparison-tabs__name">Модель</div>
+											<div class="comparison-tabs__value">Мощность двигателя, кВт</div>
+											<div class="comparison-tabs__value">Мощность миксера, кВт</div>
+											<div class="comparison-tabs__value">Внешний диаметр шнека, мм</div>
+											<div class="comparison-tabs__value">Производительность, кг/ч</div>
+											<div class="comparison-tabs__value">Бункер, л</div>
+											<div class="comparison-tabs__value">Передаточное число</div>
+											<div class="comparison-tabs__value">Бункер основного материала, л
+											</div>
+											<div class="comparison-tabs__value">Миксер</div>
+											<div class="comparison-tabs__value">Тяжелая база</div>
+											<div class="comparison-tabs__value">Высота, мм</div>
+											<div class="comparison-tabs__value">Длина, мм</div>
+											<div class="comparison-tabs__value">Ширина, мм</div>
+											<div class="comparison-tabs__value">Масса, кг</div>
+										</div>
+										<div data-swiper-wrapper="swiper-comparison" class="comparison-tabs__table">
+											<div data-swiper="swiper-comparison" class="swiper-comparison swiper">
+												<div class="swiper-wrapper">
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name _active">SGD-12</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-16</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-20</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-30</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-D</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-30</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+													<div class="swiper-slide">
+														<div class="comparison-tabs__name">SGD-D</div>
+														<div class="comparison-tabs__value">0.06</div>
+														<div class="comparison-tabs__value">0.09</div>
+														<div class="comparison-tabs__value">32</div>
+														<div class="comparison-tabs__value">0.04-3.6</div>
+														<div class="comparison-tabs__value">10</div>
+														<div class="comparison-tabs__value">38:1</div>
+														<div class="comparison-tabs__value">15 (опция)</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">опция</div>
+														<div class="comparison-tabs__value">610</div>
+														<div class="comparison-tabs__value">645</div>
+														<div class="comparison-tabs__value">441</div>
+														<div class="comparison-tabs__value">36</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-navs">
+												<button class="swiper-nav swiper-nav_prev" type="button">
+													<svg aria-hidden="true" width="20" height="20">
+														<use xlink:href="img/sprite.svg#arrow1"></use>
+													</svg>
+													<span class="v-h">Назад</span>
+												</button>
+												<div class="swiper-scrollbar"></div>
+												<button class="swiper-nav swiper-nav_next" type="button">
+													<svg aria-hidden="true" width="20" height="20">
+														<use xlink:href="img/sprite.svg#arrow1"></use>
+													</svg>
+													<span class="v-h">Вперед</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-tabs-content="tab4" class="tabs__body">
+								<div class="block-delivery__body">
+									<div class="block-delivery__column">
+										<div class="block-delivery__item">
+											<div class="block-delivery__header">
+												<img src="img/icon5.svg" alt="">
+												<div class="block-delivery__title">
+													условия оплаты
+												</div>
+											</div>
+											<div class="block-delivery__descr">
+												<p>
+													Уважаемые клиенты! Обращаем ваше внимание, что оплата за
+													товар и услуги
+													доставки производится <strong>только
+														безналичным
+														расчетом.</strong> Это
+													единственный
+													способ
+													оплаты при покупке товара в нашей компании, и форма оплаты –
+													только
+													расчетный счет.
+												</p>
+												<p>
+													После подписания договора клиент вносит предоплату, при
+													готовности
+													товара
+													оплачивается вторая часть стоимости товара, при поступлении
+													товара в РФ
+													покупатель оплачивает оставшуюся часть. Таким образом,
+													оплата товара
+													производится в три этапа.
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="block-delivery__column">
+										<div class="block-delivery__item">
+											<div class="block-delivery__header">
+												<img src="img/icon6.svg" alt="">
+												<div class="block-delivery__title">
+													условия доставки
+												</div>
+											</div>
+											<div class="block-delivery__descr">
+												<p>
+													До 80-ти процентов продукции нашей компании находится на
+													складе и может
+													быть
+													отправлено на следующий день после подписания договора и
+													оплаты.
+												</p>
+												<p>
+													<strong>Если товара
+														нет на складе</strong> – поставка производится под заказ.
+													Срок
+													поставки
+													варьируется
+													от 85 до 110 календарных дней. При поставке товара на
+													территорию
+													Российской
+													Федерации производится процедура растаможивания. После
+													оформления всех
+													документов товар готов к отправке на место назначения.
+												</p>
+												<p>
+													<strong>
+														На любом этапе оплаты
+														и доставки товара Вы можете рассчитывать
+														<br>
+														на профессиональную поддержку наших специалистов.
+													</strong>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-tabs-content="tab5" class="tabs__body">
+								<div class="tabs__documents documents-tabs">
+									<div class="documents-tabs__title">документация</div>
+									<div class="documents-tabs__body">
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+										<a href="#" download="#" class="documents-tabs__column">
+											Инструкция для гравиметрических дозаторов SHINI
+											<svg width="22" height="22">
+												<use xlink:href="img/sprite.svg#download"></use>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+
+	{% include 'blocks/recommended.njk' %}
+
+	{% include 'blocks/feedback.njk' %}
+
+	<div class="block-shopping-cart">
+		<div class="block-shopping-cart__button">
+			<div class="block-shopping-cart__icon">
+				<svg aria-hidden="true" width="30" height="30">
+					<use xlink:href="img/sprite.svg#shopping-cart"></use>
+				</svg>
+				<span>2</span>
+			</div>
+		</div>
+		<div class="block-shopping-cart__content">
+			<div class="block-shopping-cart__top">
+				<div class="block-shopping-cart__title">
+					корзина <span>[3 товара]</span>
+				</div>
+				<div class="block-shopping-cart__close">
+					<svg aria-hidden="true" width="30" height="30">
+						<use xlink:href="img/sprite.svg#close1"></use>
+					</svg>
+				</div>
+			</div>
+			<div class="block-shopping-cart__cards">
+				<div class="card-item">
+					<a href="#" class="card-item__image">
+						<img src="img/image13.webp" alt="">
+					</a>
+					<div class="card-item__titles">
+						<a href="#" class="card-item__title">
+							Шнековый дозатор красителя SHINI серии
+							SCM
+						</a>
+						<div class="card-item__price">от 5 000 $</div>
+						<div data-stepcounter="" class="stepcounter stepcounter_accent">
+							<button class="stepcounter__btn" data-stepcounter="-" type="button" disabled="disabled">
+								<svg width="14" height="2" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#minus1"></use>
+								</svg>
+							</button>
+							<input data-stepcounter-input class="stepcounter__input" type="text" value="1" min="1"
+								max="10" name="stepcounter1" readonly="">
+							<button class="stepcounter__btn" data-stepcounter="+" type="button">
+								<svg width="14" height="14" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#plus1"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="card-item__price">от 5 000 $</div>
+					<button type="button" class="card-item__delete">
+						<svg aria-hidden="true" width="18" height="20">
+							<use xlink:href="img/sprite.svg#delete"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="card-item">
+					<a href="#" class="card-item__image">
+						<img src="img/image13.webp" alt="">
+					</a>
+					<div class="card-item__titles">
+						<a href="#" class="card-item__title">
+							Шнековый дозатор красителя SHINI серии
+							SCM
+						</a>
+						<div class="card-item__price">от 5 000 $</div>
+						<div data-stepcounter="" class="stepcounter stepcounter_accent">
+							<button class="stepcounter__btn" data-stepcounter="-" type="button" disabled="disabled">
+								<svg width="14" height="2" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#minus1"></use>
+								</svg>
+							</button>
+							<input data-stepcounter-input class="stepcounter__input" type="text" value="1" min="1"
+								max="10" name="stepcounter1" readonly="">
+							<button class="stepcounter__btn" data-stepcounter="+" type="button">
+								<svg width="14" height="14" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#plus1"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="card-item__price">от 5 000 $</div>
+					<button type="button" class="card-item__delete">
+						<svg aria-hidden="true" width="18" height="20">
+							<use xlink:href="img/sprite.svg#delete"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="card-item">
+					<a href="#" class="card-item__image">
+						<img src="img/image13.webp" alt="">
+					</a>
+					<div class="card-item__titles">
+						<a href="#" class="card-item__title">
+							Шнековый дозатор красителя SHINI серии
+							SCM
+						</a>
+						<div class="card-item__price">от 5 000 $</div>
+						<div data-stepcounter="" class="stepcounter stepcounter_accent">
+							<button class="stepcounter__btn" data-stepcounter="-" type="button" disabled="disabled">
+								<svg width="14" height="2" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#minus1"></use>
+								</svg>
+							</button>
+							<input data-stepcounter-input class="stepcounter__input" type="text" value="1" min="1"
+								max="10" name="stepcounter1" readonly="">
+							<button class="stepcounter__btn" data-stepcounter="+" type="button">
+								<svg width="14" height="14" aria-hidden="true">
+									<use xlink:href="img/sprite.svg#plus1"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="card-item__price">от 5 000 $</div>
+					<button type="button" class="card-item__delete">
+						<svg aria-hidden="true" width="18" height="20">
+							<use xlink:href="img/sprite.svg#delete"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="block-shopping-cart__bottom">
+				<div class="block-shopping-cart__totals">
+					<span>Итого к оплате:</span>
+					<div class="block-shopping-cart__total">207 000 ₽</div>
+				</div>
+				<div class="block-shopping-cart__btn">
+					<a href="order.html" class="btn btn_primary">Оформить заказ</a>
+				</div>
+			</div>
+		</div>
+		<div class="shadow"></div>
+	</div>
+
+	</main>
+	{% include 'blocks/footer.njk' %}
+	</div>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

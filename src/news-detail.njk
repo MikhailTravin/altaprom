@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Новости - детальная</title>
+	{% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+	<div class="main-wrapper-outer">
+		{% include 'blocks/header.njk' %}
+		<main class="main">
+
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a href="/">
+								Главная
+							</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a href="catalog.html">
+								Новости
+							</a>
+						</li>
+						<li class="breadcrumbs__item is-active">
+							<span>
+								Участие в 15-ой международной выставке Rosplast 2025
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="block-news-detail">
+				<div class="container">
+					<div class="block-news-detail__content">
+						<div class="block-news-detail__right">
+							<div class="block-news-detail__sticky">
+								<a href="news.html" class="block-news-detail__link">
+									<svg aria-hidden="true" width="16" height="16">
+										<use xlink:href="img/sprite.svg#arrow1"></use>
+									</svg>
+									Назад к новостям
+								</a>
+								<div class="block-news-detail__date">
+									19 мая 2025
+								</div>
+								<div class="block-news-detail__share">
+									<span>Поделиться:</span>
+									<div class="socials">
+										<a href="#">
+											<svg aria-hidden="true" width="22" height="12">
+												<use xlink:href="img/sprite.svg#vk"></use>
+											</svg>
+										</a>
+										<a href="#">
+											<svg aria-hidden="true" width="18" height="16">
+												<use xlink:href="img/sprite.svg#telegram"></use>
+											</svg>
+										</a>
+										<a href="#">
+											<svg aria-hidden="true" width="20" height="20">
+												<use xlink:href="img/sprite.svg#whatsapp"></use>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="block-news-detail__left">
+							<div class="descr">
+								<h1 class="title3">
+									Роторная мельница с системой выгрузки готового компонента
+								</h1>
+								<img src="img/image20.webp" alt="">
+								<p>
+									Под потребность заказчика из Москвы изготовили роторную мельницу с системой выгрузки
+									готового компонента.
+								</p>
+								<strong>
+									Роторная мельница модель – LVPul 750:
+								</strong>
+								<ul>
+									<li>
+										мощность двигателя 75 кВт
+									</li>
+									<li>
+										двигатель питания 0,75 кВт
+									</li>
+									<li>
+										рубашка охлаждения ротора с поводом воды
+									</li>
+									<li>
+										количество ножей — 60 штук, изготовлены из стали Hardox500
+									</li>
+									<li>
+										диаметр сетки 3 мм
+									</li>
+								</ul>
+								<strong >
+									Комплектность:
+								</strong>
+								<ul>
+									<li>
+										система загрузки (адаптер, подача сырья)
+									</li>
+									<li>
+										бункер для дробленки
+									</li>
+									<li>
+										роторно-вихревая мельница
+									</li>
+									<li>
+										система пневмотранспорта
+									</li>
+									<li>
+										система аспирации
+									</li>
+									<li>
+										циклон для готового сырья
+									</li>
+									<li>
+										шкаф управления
+									</li>
+								</ul>
+								<strong>
+									Система выгрузки готового компонента состоит из:
+								</strong>
+								<ul>
+									<li>
+										затвор секторный RVS102010B00S00
+									</li>
+									<li>
+										шнековый транспортер LVT-114 (l-3.00) с охлаждением
+									</li>
+								</ul>
+							</div>
+							<div class="gallery">
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+								<a href="img/image20.webp" data-fancybox="gallery">
+									<img src="img/image20.webp" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% include 'blocks/sales.njk' %}
+
+		</main>
+		{% include 'blocks/footer.njk' %}
+	</div>
+	{% include 'blocks/popups.njk' %}
+	{% include 'blocks/scripts.njk' %}
+</body>
+
+</html>
